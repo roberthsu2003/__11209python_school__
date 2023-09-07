@@ -1,2 +1,0 @@
-hello! python!
-這是中文

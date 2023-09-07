@@ -1,6 +1,4 @@
 # 11209python_school
-## python語言
-- 輸入和輸出
-- 資料類型
-- 數學計算
-11209台北市職能發展學院
+
+## 上課網址
+https://meet.google.com/wvu-enjr-oor

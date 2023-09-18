@@ -10,3 +10,10 @@ https://youtube.com/live/8g47p3taMgs
 ## 2023_09_11_下午
 https://youtube.com/live/AtroDSd5d_8
 
+## 2023_09_18_上午
+https://youtube.com/live/6OibmpoCpLI
+
+## 2023_09_18_下午
+https://youtube.com/live/r2KDWlgAK6g
+
+

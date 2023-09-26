@@ -1,7 +1,7 @@
 import random
 import pyinputplus as pyip
 
-def playGame():
+def playGame() -> None:
     min = 1
     max = 100
     count = 0

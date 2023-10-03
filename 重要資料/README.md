@@ -40,4 +40,9 @@ https://youtube.com/live/uVgkjUgoAzM
 ## 2023_09_28_下午
 https://youtube.com/live/3J14_89QTN4
 
+## 2023_10_03_早上
+https://youtube.com/live/nq72hqmWbB8
+
+## 2023_10_03_下午
+https://youtube.com/live/q5dVNcxdTm0
 

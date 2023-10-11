@@ -31,3 +31,11 @@ def cities_info() -> list[list]:
                 if row[0] == '111':
                     __cities.append(row)
     return __cities
+
+def cityNames() -> list[str]:
+    cities = cities_info()
+    names = []
+    for row in cities:
+        cityName = row[1]
+        names.append(cityName)
+    return names

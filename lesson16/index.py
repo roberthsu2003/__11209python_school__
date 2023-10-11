@@ -2,7 +2,9 @@ import dataSource
 
 def main():
     names = dataSource.cityNames()
-    print(names)
+    city = dataSource.info(name='屏東縣新埤')
+    #print(names)
+    print(city)
     
 
 if __name__ == "__main__":

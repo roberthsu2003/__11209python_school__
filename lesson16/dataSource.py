@@ -39,3 +39,12 @@ def cityNames() -> list[str]:
         cityName = row[1]
         names.append(cityName)
     return names
+
+def info(name:str) -> list[str]:
+    cities = cities_info()
+    for city in cities:
+        if city[1] == name:
+            return city
+
+    return []    
+    

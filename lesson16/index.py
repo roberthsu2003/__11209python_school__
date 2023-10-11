@@ -1,13 +1,9 @@
 import dataSource
 
 def main():
-    try:
-        data_list = dataSource.download()    
-    except Exception as e:
-        print(f"錯誤:{e}")
-    else:
-        for row in data_list:
-            print(row)
+    cities = dataSource.cities_info()
+    for city in cities:
+        print(city)
 
 if __name__ == "__main__":
     main()

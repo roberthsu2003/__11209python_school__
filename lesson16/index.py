@@ -2,6 +2,7 @@ import dataSource
 
 def main():
     cities = dataSource.cities_info()
+    cities1 = dataSource.cities_info()
     for city in cities:
         print(city)
 

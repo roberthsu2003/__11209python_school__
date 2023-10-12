@@ -14,7 +14,7 @@ class Window(tk.Tk):
         topFrame.pack()
 
         bottomFrame = tk.Frame(self,background='#B9887D')
-        choices = ["apple", "orange", "banana"]
+        choices = dataSource.cityNames()
         choicesvar = tk.StringVar(value=choices)
         listbox = tk.Listbox(bottomFrame,listvariable=choicesvar)
         listbox.pack()

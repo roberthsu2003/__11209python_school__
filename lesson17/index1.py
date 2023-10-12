@@ -14,7 +14,11 @@ class Window(tk.Tk):
         topFrame.pack()
 
         bottomFrame = tk.Frame(self,background='#B9887D')
-        bottomFrame.pack()
+        choices = ["apple", "orange", "banana"]
+        choicesvar = tk.StringVar(value=choices)
+        listbox = tk.Listbox(bottomFrame,listvariable=choicesvar)
+        listbox.pack()
+        bottomFrame.pack(expand=True,fill='x')
 
 
 def main():

@@ -16,14 +16,16 @@ class Window(tk.Tk):
         bottomFrame = tk.Frame(self,background='#B9887D')
         choices = dataSource.cityNames()
         choicesvar = tk.StringVar(value=choices)
-        listbox = tk.Listbox(bottomFrame,listvariable=choicesvar,width=12)
-        listbox.pack(pady=20)        
+        self.listbox = tk.Listbox(bottomFrame,listvariable=choicesvar,width=12)
+        self.listbox.pack(pady=20)        
         bottomFrame.pack(expand=True,fill='x')
 
-        listbox.bind("<<ListboxSelect>>",self.user_selected)
+        self.listbox.bind("<<ListboxSelect>>",self.user_selected)
 
     def user_selected(self,event):
-        print("user selected")
+        selectedIndex = self.listbox.curselection()[0]
+        cityName = self.listbox.get(selectedIndex)
+        print(dataSource.info(cityName))
 
 
 def main():

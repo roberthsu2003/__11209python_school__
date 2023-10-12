@@ -5,9 +5,16 @@ from tkinter import ttk
 class Window(tk.Tk):
     def __init__(self,**kwargs):
         super().__init__(**kwargs)
-        self.title("這是我的第一個視窗")
-        label = tk.Label(self,text="Hello! Tkinter!",font=('Helvetica', '30'))
+        self.title("鄉鎮人口統計")
+        self.configure(background='#CB1B45')
+
+        topFrame = tk.Frame(self,background='#B19693')
+        label = ttk.Label(topFrame,text="鄉鎮人口統計",font=('Helvetica', '30'))
         label.pack(padx=100,pady=50)
+        topFrame.pack()
+
+        bottomFrame = tk.Frame(self,background='#B9887D')
+        bottomFrame.pack()
 
 
 def main():

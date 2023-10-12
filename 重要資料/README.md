@@ -63,3 +63,8 @@ https://youtube.com/live/KIRkIjfLDmc
 ## 2023_10_11_下午
 https://youtube.com/live/L8OswjTmR94
 
+## 2023_10_12_早上
+https://youtube.com/live/o0Fxj1zznCE
+
+
+

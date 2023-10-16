@@ -15,12 +15,14 @@ class Window(tk.Tk):
 class MyFrame(ttk.LabelFrame):
     def __init__(self,master,title,**kwargs):
         super().__init__(master,text=title,**kwargs)
-        #self.configure(background='#9E7A7A')
-        ttk.Radiobutton(self,text="左邊",value='left').grid(column=0,row=0,padx=10)
-        ttk.Radiobutton(self,text="中間",value='center').grid(column=1,row=0,padx=10)
-        ttk.Radiobutton(self,text="右邊",value='right').grid(column=2,row=0,padx=10)
-
+        self.aligement = tk.StringVar(value='left')
+        ttk.Radiobutton(self,text="左邊",value='left',variable=self.aligement,command=self.choised).grid(column=0,row=0,padx=10)
+        ttk.Radiobutton(self,text="中間",value='center',variable=self.aligement,command=self.choised).grid(column=1,row=0,padx=10)
+        ttk.Radiobutton(self,text="右邊",value='right',variable=self.aligement,command=self.choised).grid(column=2,row=0,padx=10)
         self.pack(expand=1, fill='x',padx=10,pady=10)
+
+    def choised(self):
+        print(self.aligement.get())
 
 
 def main():    

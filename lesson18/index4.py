@@ -30,6 +30,8 @@ def main():
     myFrame = MyFrame(window,"對齊方式")
     s = ttk.Style()
     print(s.theme_names())
+    print(s.theme_use())
+    #print(s.theme_use('clam'))
     window.mainloop()
 
 if __name__ == "__main__":

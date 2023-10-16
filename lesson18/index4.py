@@ -30,8 +30,8 @@ class MyFrame(tk.LabelFrame):
         password_label = ttk.Label(self,text="密碼:",font=('Helvetica',12))
         password_label.grid(column=0,row=2,sticky=tk.E,pady=10)
 
-        username_entry = ttk.Entry(self)
-        username_entry.grid(column=1,row=2)
+        password_entry = ttk.Entry(self)
+        password_entry.grid(column=1,row=2)
 
         login_button = ttk.Button(self,text="登入")
         login_button.grid(column=1,row=3,sticky=tk.E)

@@ -1,1 +1,3 @@
 我是莊智全...
+
+![圖片](https://image.cache.storm.mg/styles/smg-800x533-fp/s3/media/image/2020/11/07/20201107-092915_U13380_M651499_4ac4.jpg?itok=6KFZde7p)

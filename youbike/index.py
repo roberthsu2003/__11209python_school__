@@ -23,7 +23,7 @@ def main():
 
     
     def update_data()->None:
-        print("做事")
+        datasource.updata_sqlite_data()
         global t
         t = Timer(20,update_data)
         t.start()  

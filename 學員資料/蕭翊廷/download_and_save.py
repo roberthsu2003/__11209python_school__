@@ -70,14 +70,19 @@ def update_data():
 
     conn = sqlite3.connect('PM2_5.db')
     create_table(conn)
-    data = download_data()
-    for item in data['records']:
-        insert_data(conn, (item['site'], item['county'],
-                    item['pm25'], item['datacreationdate'], item['itemunit']))
-    timer = threading.Timer(3600, update_data)
-    timer.start()
-    print('資料更新完畢')
-    conn.close()
+    
+    try:    
+        data = download_data()
+    except:
+        print('網路發生錯誤，請稍後再試')
+    else:    
+        for item in data['records']:
+            insert_data(conn, (item['site'], item['county'],
+                        item['pm25'], item['datacreationdate'], item['itemunit']))
+        timer = threading.Timer(10, update_data)
+        timer.start()
+        print('資料更新完畢')
+        conn.close()
 
 
 if __name__ == '__main__':

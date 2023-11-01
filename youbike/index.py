@@ -1,5 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
+from youbikeTreeView import YoubikeTreeView
+
 from tkinter import messagebox
 from threading import Timer
 import datasource
@@ -22,7 +24,12 @@ class Window(tk.Tk):
         topFrame.pack(pady=30)
 
         bottomFrame = tk.Frame(self)
+        #---------------建立treeView---------------
+        self.youbikeTreeView = YoubikeTreeView(bottomFrame,show="headings",columns=('sna','mday','sarea','ar','tot','sbi','bemp'))
+        self.youbikeTreeView.pack()
         bottomFrame.pack(pady=30)
+
+        
 
 
 def main():    

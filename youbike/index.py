@@ -13,7 +13,7 @@ class Window(tk.Tk):
             datasource.updata_sqlite_data()
         except Exception:
             messagebox.showerror("錯誤",'網路不正常\n將關閉應用程式\n請稍後再試')
-            self.destroy()
+            self.destroy()           
         
 
         #---------建立介面------------------------
@@ -30,6 +30,7 @@ class Window(tk.Tk):
         vsb.pack(side='left',fill='y')
         self.youbikeTreeView.configure(yscrollcommand=vsb.set)
         bottomFrame.pack(pady=30)
+        print(datasource.search_sitename('三'))
         
 
         

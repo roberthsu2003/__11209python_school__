@@ -13,7 +13,7 @@ class Window(tk.Tk):
             datasource.updata_sqlite_data()
         except Exception:
             messagebox.showerror("錯誤",'網路不正常\n將關閉應用程式\n請稍後再試')
-            self.destroy()
+            self.destroy()           
         
 
         #---------建立介面------------------------
@@ -25,12 +25,13 @@ class Window(tk.Tk):
         bottomFrame = tk.Frame(self)
         #---------------建立treeView---------------
         self.youbikeTreeView = YoubikeTreeView(bottomFrame,show="headings",columns=('sna','mday','sarea','ar','tot','sbi','bemp'))
-        self.youbikeTreeView.pack()
+        self.youbikeTreeView.pack(side='left')
+        vsb = ttk.Scrollbar(bottomFrame, orient="vertical", command=self.youbikeTreeView.yview)
+        vsb.pack(side='left',fill='y')
+        self.youbikeTreeView.configure(yscrollcommand=vsb.set)
         bottomFrame.pack(pady=30)
-
-        #-----------更新treeView資料---------------
-        lastest_data = datasource.lastest_datetime_data()
-        self.youbikeTreeView.update_content(lastest_data)
+        print(datasource.search_sitename('三'))
+        
 
         
 
@@ -38,6 +39,10 @@ class Window(tk.Tk):
 def main():    
     def update_data(w:Window)->None:
         datasource.updata_sqlite_data()
+        #-----------更新treeView資料---------------
+        lastest_data = datasource.lastest_datetime_data()
+        w.youbikeTreeView.update_content(lastest_data)
+
         window.after(3*60*1000,update_data,w) #每隔3分鐘
           
 

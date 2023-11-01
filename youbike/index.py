@@ -22,7 +22,19 @@ class Window(tk.Tk):
         topFrame.pack(pady=30)
 
         bottomFrame = tk.Frame(self)
+        #---------------建立treeView---------------
+        self.treeview = ttk.Treeview(bottomFrame,columns=('sna','mday','sarea','ar','tot','sbi','bemp'))
+        self.treeview.heading('sna',text='站點名稱')
+        self.treeview.heading('mday',text='更新時間')
+        self.treeview.heading('sarea',text='行政區')
+        self.treeview.heading('ar',text='地址')
+        self.treeview.heading('tot',text='總車輛數')
+        self.treeview.heading('sbi',text='可借')
+        self.treeview.heading('bemp',text='可還')
+        self.treeview.pack()
         bottomFrame.pack(pady=30)
+
+        
 
 
 def main():    

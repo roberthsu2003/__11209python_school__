@@ -27,7 +27,7 @@ class Window(tk.Tk):
         self.youbikeTreeView = YoubikeTreeView(bottomFrame,show="headings",columns=('sna','mday','sarea','ar','tot','sbi','bemp'))
         self.youbikeTreeView.pack(side='left')
         vsb = ttk.Scrollbar(bottomFrame, orient="vertical", command=self.youbikeTreeView.yview)
-        vsb.pack(side='left')
+        vsb.pack(side='left',fill='y')
         self.youbikeTreeView.configure(yscrollcommand=vsb.set)
         bottomFrame.pack(pady=30)
         

@@ -25,7 +25,7 @@ class Window(tk.Tk):
 
         bottomFrame = tk.Frame(self)
         #---------------建立treeView---------------
-        self.youbikeTreeView = YoubikeTreeView(bottomFrame,columns=('sna','mday','sarea','ar','tot','sbi','bemp'))
+        self.youbikeTreeView = YoubikeTreeView(bottomFrame,show="headings",columns=('sna','mday','sarea','ar','tot','sbi','bemp'))
         self.youbikeTreeView.pack()
         bottomFrame.pack(pady=30)
 

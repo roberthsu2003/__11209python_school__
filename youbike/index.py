@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
 from youbikeTreeView import YoubikeTreeView
-
 from tkinter import messagebox
 from threading import Timer
 import datasource
@@ -28,6 +27,10 @@ class Window(tk.Tk):
         self.youbikeTreeView = YoubikeTreeView(bottomFrame,show="headings",columns=('sna','mday','sarea','ar','tot','sbi','bemp'))
         self.youbikeTreeView.pack()
         bottomFrame.pack(pady=30)
+
+        #-----------更新treeView資料---------------
+        lastest_data = datasource.lastest_datetime_data()
+        self.youbikeTreeView.update_content(lastest_data)
 
         
 

@@ -13,16 +13,24 @@ class YoubikeTreeView(ttk.Treeview):
         self.heading('bemp',text='可還')
 
         #----------設定欄位寬度------------
-        self.column('sna',width=120)
+        self.column('sna',width=200)
         self.column('mday',width=150)
         self.column('sarea',width=50)
-        self.column('ar',width=250)
+        self.column('ar',width=300)
         self.column('tot',width=50)
         self.column('sbi',width=50)
         self.column('bemp',width=50)
 
     def update_content(self,site_datas):
-        print(site_datas)
+        '''
+        更新內容
+        '''
+        #清除所有內容
+        for i in self.get_children():
+            self.delete(i)
+        
+        for site in site_datas:
+            self.insert('','end',values=site)
 
 
 

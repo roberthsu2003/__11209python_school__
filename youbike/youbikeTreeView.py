@@ -41,10 +41,12 @@ class YoubikeTreeView(ttk.Treeview):
     def selectedItem(self,event):
         selectedItem = self.focus()
         print(selectedItem)
-        print(self.item(selectedItem))
-        get_password = GetPassword(self.parent)
+        data_dict = self.item(selectedItem)
+        data_list = data_dict['values']
+        title = data_list[0]
+        detail = ShowDetail(self.parent,title=title)
         
 
 
-class GetPassword(Dialog):
+class ShowDetail(Dialog):
     pass        

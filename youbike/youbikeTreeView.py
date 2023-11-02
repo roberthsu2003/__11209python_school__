@@ -44,9 +44,11 @@ class YoubikeTreeView(ttk.Treeview):
         data_dict = self.item(selectedItem)
         data_list = data_dict['values']
         title = data_list[0]
-        detail = ShowDetail(self.parent,title=title)
+        detail = ShowDetail(self.parent,data=data_list,title=title)
         
 
 
 class ShowDetail(Dialog):
-    pass        
+    def __init__(self,parent,data,**kwargs):
+        super().__init__(parent,**kwargs)
+        self.data = data      

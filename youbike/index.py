@@ -51,7 +51,8 @@ class Window(tk.Tk):
         #使用者輸入的文字
         input_word = searchEntry.get()
         if input_word == "":
-            print("空的")
+            lastest_data = datasource.lastest_datetime_data()
+            self.youbikeTreeView.update_content(lastest_data)
         else:
             search_data = datasource.search_sitename(word=input_word)
             self.youbikeTreeView.update_content(search_data)

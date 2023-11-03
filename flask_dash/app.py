@@ -1,5 +1,3 @@
-import dash
-import dash_html_components as html
 import flask
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 from werkzeug.serving import run_simple

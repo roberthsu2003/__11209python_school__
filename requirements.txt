@@ -1,2 +1,6 @@
 PyInputPlus
 requests
+dash
+pandas
+gunicorn
+flask

@@ -62,7 +62,9 @@ class ShowDetail(Dialog):
         
 
     def body(self, master):        
-        #super().body(master)
+        '''
+        override body,可以自訂body的外觀內容
+        '''
         mainFrame = tk.Frame(master)
         mainFrame.pack(padx=100,pady=100)
         tk.Label(mainFrame,text="站點名稱").grid(column=0, row=0)
@@ -99,3 +101,17 @@ class ShowDetail(Dialog):
         bempVar = tk.StringVar()
         bempVar.set(self.bemp)
         tk.Entry(mainFrame,textvariable=bempVar,state='disabled').grid(column=1,row=6)
+
+    def buttonbox(self):
+        '''
+        override buttonbox,可以自訂body的外觀內容
+        '''
+        box = tk.Frame(self)
+
+        w = tk.Button(box, text="確認", width=10, command=self.ok, default=tk.ACTIVE)
+        w.pack(padx=5, pady=(5,20))      
+
+        self.bind("<Return>", self.ok)
+        self.bind("<Escape>", self.cancel)
+
+        box.pack()

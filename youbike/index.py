@@ -21,16 +21,43 @@ class Window(tk.Tk):
         topFrame = tk.Frame(self,relief=tk.GROOVE,borderwidth=1)
         tk.Label(topFrame,text="台北市youbike及時資料",font=("arial", 20), bg="#333333", fg='#ffffff',padx=10,pady=10).pack(padx=20,pady=20)
         topFrame.pack(pady=30)
+        #---------------------------------------
 
-        bottomFrame = tk.Frame(self)
+
+        #----------建立搜尋------------------------
+        middleFrame = ttk.LabelFrame(self,text='')
+        tk.Label(middleFrame,text='站點名稱搜尋:').pack(side='left')
+        search_entry = tk.Entry(middleFrame)
+        search_entry.bind("<KeyRelease>", self.OnEntryClick)
+        search_entry.pack(side='left')        
+        middleFrame.pack(fill='x',padx=20)
+        #----------------------------------------
+
         #---------------建立treeView---------------
-        self.youbikeTreeView = YoubikeTreeView(bottomFrame,show="headings",columns=('sna','mday','sarea','ar','tot','sbi','bemp'))
+        bottomFrame = tk.Frame(self)
+        
+        self.youbikeTreeView = YoubikeTreeView(bottomFrame,show="headings",
+                                               columns=('sna','mday','sarea','ar','tot','sbi','bemp'),
+                                               height=20)
         self.youbikeTreeView.pack(side='left')
         vsb = ttk.Scrollbar(bottomFrame, orient="vertical", command=self.youbikeTreeView.yview)
         vsb.pack(side='left',fill='y')
         self.youbikeTreeView.configure(yscrollcommand=vsb.set)
-        bottomFrame.pack(pady=30)
-        print(datasource.search_sitename('三'))
+        bottomFrame.pack(pady=(0,30),padx=20)
+        #-------------------------------------------
+    
+    def OnEntryClick(self,event):
+        searchEntry = event.widget
+        #使用者輸入的文字
+        input_word = searchEntry.get()
+        if input_word == "":
+            lastest_data = datasource.lastest_datetime_data()
+            self.youbikeTreeView.update_content(lastest_data)
+        else:
+            search_data = datasource.search_sitename(word=input_word)
+            self.youbikeTreeView.update_content(search_data)
+        
+        
         
 
         

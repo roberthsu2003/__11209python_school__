@@ -102,4 +102,10 @@ https://youtube.com/live/2MpWKit3ynA
 ## 2023_11_02_下午
 https://youtube.com/live/daEfGFzEJ78
 
+## 2023_11_08_早上
+https://youtube.com/live/QK78Q5iEhbg
+
+## 2023_11_08_下午
+https://youtube.com/live/UjwZ3OwG1y0
+
 

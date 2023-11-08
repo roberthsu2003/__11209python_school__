@@ -1,0 +1,48 @@
+Question:如何將csv檔的資料列用python FOR 迴圈寫入postgrdSQL？
+
+Answer:
+要將 CSV 檔的資料列用 Python FOR 迴圈寫入 PostgreSQL，您可以使用以下步驟：
+
+使用 Python 的 open() 函數打開 CSV 檔。
+使用 csv.reader() 函數將 CSV 檔的資料轉換為可迭代物件。
+使用 FOR 迴圈迭代 CSV 檔的資料。
+使用 psycopg2 模組將資料插入 PostgreSQL 表中。
+以下是一個示例：
+
+Python
+import csv
+import psycopg2
+
+# 連線到 PostgreSQL
+conn = psycopg2.connect(
+    host="localhost",
+    port=5432,
+    database="mydatabase",
+    user="myuser",
+    password="mypassword",
+)
+
+# 開啟 CSV 檔
+with open("data.csv", "r") as csvfile:
+
+    # 將 CSV 檔的資料轉換為可迭代物件
+    reader = csv.reader(csvfile, delimiter=",")
+
+    # 使用 FOR 迴圈迭代 CSV 檔的資料
+    for row in reader:
+
+        # 將資料插入 PostgreSQL 表中
+        conn.cursor().execute(
+            "INSERT INTO mytable (column1, column2) VALUES (%s, %s)",
+            row,
+        )
+
+# 提交資料
+conn.commit()
+
+# 關閉連線
+conn.close()
+請謹慎使用程式碼。瞭解詳情
+在上述示例中，我們首先使用 open() 函數打開 CSV 檔。然後，我們使用 csv.reader() 函數將 CSV 檔的資料轉換為可迭代物件。接下來，我們使用 FOR 迴圈迭代 CSV 檔的資料。在每個迭代中，我們使用 psycopg2 模組將資料插入 PostgreSQL 表中。最後，我們提交資料並關閉連線。
+
+您可以根據自己的需要修改上述示例。例如，您可以指定要插入的 PostgreSQL 表和欄位。您還可以使用 psycopg2 模組提供的其他方法來控制插入操作。

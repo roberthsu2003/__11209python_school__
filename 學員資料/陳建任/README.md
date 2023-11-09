@@ -10,3 +10,5 @@
 # 11.02作業
 [打造知名地標](https://github.com/AraRen/PythonSchool_HW/blob/main/2023_11_02/Marker.py)
 
+# 11.08作業
+[11.08作業](./HW.png)

@@ -33,3 +33,6 @@
 
 ## 2023_10_30
 [SQLite資料匯入] (https://github.com/Rachelyah/11209Python_school/tree/main/1026/homework_%E7%A9%BA%E6%B0%A3%E5%93%81%E8%B3%AA%E8%B3%87%E6%96%99)
+
+## 2023_11_02
+[tkinter地圖功能](https://github.com/Rachelyah/11209Python_school/blob/main/1101/homework_地圖/map.ipynb)

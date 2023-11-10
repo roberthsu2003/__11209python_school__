@@ -2,7 +2,7 @@ import requests
 import psycopg2
 import password as pw
 
-def download_youbike_data()->list[dict]:
+def __download_youbike_data()->list[dict]:
     '''
     下載台北市youbike資料2.0
     https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json
@@ -13,7 +13,7 @@ def download_youbike_data()->list[dict]:
     print("下載成功")
     return response.json()
 
-def create_table(conn)->None:    
+def __create_table(conn)->None:    
     cursor = conn.cursor()
     cursor.execute(
         '''
@@ -35,7 +35,7 @@ def create_table(conn)->None:
     cursor.close()
     print("create_table成功")
 
-def insert_data(conn,values:list[any])->None:
+def __insert_data(conn,values:list[any])->None:
     cursor = conn.cursor()
     sql = '''
     INSERT INTO 台北市youbike (站點名稱, 行政區, 更新時間, 地址, 總車輛數, 可借, 可還) 
@@ -45,3 +45,19 @@ def insert_data(conn,values:list[any])->None:
     cursor.execute(sql,values)    
     conn.commit()
     cursor.close()
+
+def updata_render_data()->None:
+    '''
+    下載,並更新資料庫
+    '''
+    data = __download_youbike_data()
+    conn = psycopg2.connect(database=pw.DATABASE,
+                            user=pw.USER, 
+                            password=pw.PASSWORD,
+                            host=pw.HOST, 
+                            port="5432")
+        
+    __create_table(conn)
+    for item in data:
+        __insert_data(conn,[item['sna'],item['sarea'],item['mday'],item['ar'],item['tot'],item['sbi'],item['bemp']])
+    conn.close()

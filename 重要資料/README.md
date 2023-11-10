@@ -108,4 +108,9 @@ https://youtube.com/live/QK78Q5iEhbg
 ## 2023_11_08_下午
 https://youtube.com/live/UjwZ3OwG1y0
 
+## 2023_11_10_早上
+https://youtube.com/live/lRY9hvVHfFE
+
+## 2023_11_10_下午
+https://youtube.com/live/o6HQepxxDlo
 

@@ -5,6 +5,8 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 from youbikeTreeView import YoubikeTreeView
+from threading import Timer
+
 
 class Window(tk.Tk):
     def __init__(self,**kwargs):
@@ -33,23 +35,34 @@ class Window(tk.Tk):
 
 def main():
     def update_data(w:Window)->None:
+        #-----------更新treeView資料---------------
+        #-----------必需先顯示treeView資料,再更新資料,因為更新資料的時間太長----------
+        
         try:
             datasource.updata_render_data()
+            #pass
         except Exception:
             messagebox.showerror("錯誤",'網路不正常\n將關閉應用程式\n請稍後再試')
             #window.destroy()
-        
-        #-----------更新treeView資料---------------
+
         lastest_data = datasource.lastest_datetime_data()
         w.youbikeTreeView.update_content(lastest_data)
+        
+        
 
-        w.after(5*60*1000,update_data,w) #每隔5分鐘
+        #w.after(5*60*1000,update_data,w) #每隔5分鐘
+        t = Timer(5*60, update_data,args=(window,))
+        t.start()
 
     window = Window()
     window.title('台北市youbike2.0')
     #window.geometry('600x300')
     window.resizable(width=False,height=False)
-    window.after(1000,update_data,window)          
+    lastest_data = datasource.lastest_datetime_data()
+    window.youbikeTreeView.update_content(lastest_data)
+    #window.after(1000,update_data,window) 
+    t = Timer(1, update_data,args=(window,))
+    t.start()         
     window.mainloop()
     
 

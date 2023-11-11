@@ -90,4 +90,27 @@ https://youtube.com/live/O4-xNNJmaQ8
 ## 2023_10_26_下午2
 https://youtube.com/live/iOCZOlfb3Sg
 
+## 2023_11_01_早上
+https://youtube.com/live/wJhn4V0tMqM
+
+## 2023_11_01_下午
+https://youtube.com/live/bo7vnbr8KEw
+
+## 2023_11_02_早上
+https://youtube.com/live/2MpWKit3ynA
+
+## 2023_11_02_下午
+https://youtube.com/live/daEfGFzEJ78
+
+## 2023_11_08_早上
+https://youtube.com/live/QK78Q5iEhbg
+
+## 2023_11_08_下午
+https://youtube.com/live/UjwZ3OwG1y0
+
+## 2023_11_10_早上
+https://youtube.com/live/lRY9hvVHfFE
+
+## 2023_11_10_下午
+https://youtube.com/live/o6HQepxxDlo
 

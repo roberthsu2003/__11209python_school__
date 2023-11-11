@@ -4,7 +4,6 @@ import threading
 import password as pw
 
 
-# 須先建立password.py存放api，才能下載資料
 # 即時資料網址:https://data.moenv.gov.tw/swagger/
 
 

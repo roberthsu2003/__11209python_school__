@@ -1,0 +1,6 @@
+api="f5bebf68-0b35-4a9f-b7ee-58e4fd9cf480"
+DATABASE="maindb_3w6p"
+USER="kimi80505"
+PASSWORD="rgqil1qSbUwB9nfmTIKXCizM1NGOpVlD"
+HOST="singapore-postgres.render.com"
+PORT="5432"

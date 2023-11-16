@@ -18,7 +18,7 @@ def jsontocsv(jsonfile):  # ->records
     # records = file["records"]
 
     fieldnames = ["site", "county", "pm25", "datacreationdate", "itemunit"]
-    with open("records.csv", "w", encoding="utf-8") as rec:
+    with open("records.csv", "w", encoding="utf-8", newline="") as rec:
         csvf = csv.DictWriter(rec, fieldnames=fieldnames)
         csvf.writerows(r)
 
@@ -78,6 +78,5 @@ def insertDb():
             cursor.execute(sqlinsert, rowvolues)
             conn.commit()
 
-    
     cursor.close()
     conn.close()

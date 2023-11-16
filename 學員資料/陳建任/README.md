@@ -12,3 +12,6 @@
 
 # 11.08作業
 [11.08作業](./HW.png)
+
+# 11.10作業
+[11.10作業](https://github.com/AraRen/PythonSchool_HW/tree/main/2023_11_10)

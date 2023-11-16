@@ -94,10 +94,6 @@ def on_closing():
     datasource.threadRun = False #結束次執行緒執行
     window.destroy()    
     t.cancel()
-    
-    
-
-    
 
 if __name__ == "__main__":
     t = None

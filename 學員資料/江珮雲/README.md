@@ -12,3 +12,6 @@
 
 #11.08作業
 ［作業］（https://github.com/maggiechian926/11209-python-school/blob/main/2023-11-8%E4%BD%9C%E6%A5%AD.jpg）
+
+# 11.10作業
+［作業］(https://github.com/maggiechian926/11209-python-school/tree/main/taiwan_pm25)

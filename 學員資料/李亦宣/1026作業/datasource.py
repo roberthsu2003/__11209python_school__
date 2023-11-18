@@ -52,8 +52,8 @@ def __create_table(conn:sqlite3.Connection):
             "更新時間" TEXT NOT NULL,
             PRIMARY KEY("id" AUTOINCREMENT),
             UNIQUE(測站名稱,更新時間) ON CONFLICT REPLACE
-		);
-	'''
+        );
+    '''
     )
     conn.commit()
 

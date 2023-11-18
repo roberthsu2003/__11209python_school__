@@ -27,7 +27,7 @@ def __create_table(conn)->None:
             "時間"	TEXT NOT NULL,
             PRIMARY KEY("id"),
             UNIQUE(城市名稱,時間)
-		);
+        );
         '''
     )
     conn.commit()

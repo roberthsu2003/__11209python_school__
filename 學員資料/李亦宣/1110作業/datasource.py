@@ -20,7 +20,7 @@ def __create_table(conn)->None:
     cursor.execute(
         '''
 		CREATE TABLE IF NOT EXISTS taiwan_pm25(
-			"id"	SERIAL,
+            "id"	SERIAL,
             "城市名稱"	TEXT NOT NULL,
             "縣市名稱"	TEXT NOT NULL,
             "pm25"	TEXT NOT NULL,

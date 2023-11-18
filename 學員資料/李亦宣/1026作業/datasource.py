@@ -39,18 +39,18 @@ def __create_table(conn:sqlite3.Connection):
         '''
 		CREATE TABLE IF NOT EXISTS 空氣品質(
             "id" INTEGER,
-            "測站編號" INTEGER,	
-			"測站名稱" TEXT NOT NULL,
+            "測站編號" INTEGER,
+            "測站名稱" TEXT NOT NULL,
             "測站英文名稱" TEXT NOT NULL,
-			"空品區" TEXT NOT NULL,
-			"城市" TEXT NOT NULL,
+            "空品區" TEXT NOT NULL,
+            "城市" TEXT NOT NULL,
             "鄉鎮" TEXT NOT NULL,
             "測站地址" TEXT NOT NULL,
-			"經度" INTEGER,
-			"緯度" INTEGER,
-			"測站類型" TEXT NOT NULL,
+            "經度" INTEGER,
+            "緯度" INTEGER,
+            "測站類型" TEXT NOT NULL,
             "更新時間" TEXT NOT NULL,
-			PRIMARY KEY("id" AUTOINCREMENT),
+            PRIMARY KEY("id" AUTOINCREMENT),
             UNIQUE(測站名稱,更新時間) ON CONFLICT REPLACE
 		);
 		'''

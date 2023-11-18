@@ -19,7 +19,7 @@ def __create_table(conn)->None:
     cursor = conn.cursor()
     cursor.execute(
         '''
-		CREATE TABLE IF NOT EXISTS taiwan_pm25(
+        CREATE TABLE IF NOT EXISTS taiwan_pm25(
             "id"	SERIAL,
             "城市名稱"	TEXT NOT NULL,
             "縣市名稱"	TEXT NOT NULL,
@@ -28,7 +28,7 @@ def __create_table(conn)->None:
             PRIMARY KEY("id"),
             UNIQUE(城市名稱,時間)
 		);
-		'''
+        '''
     )
     conn.commit()
     cursor.close()  

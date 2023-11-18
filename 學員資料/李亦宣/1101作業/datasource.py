@@ -19,8 +19,8 @@ def __download_youbike_data()->list[dict]:
 def __create_table(conn:sqlite3.Connection):
     cursor = conn.cursor()
     cursor.execute(
-        '''
-		CREATE TABLE IF NOT EXISTS 台北市youbike(
+    '''
+        CREATE TABLE IF NOT EXISTS 台北市youbike(
             "id"	INTEGER,
             "站點名稱"	TEXT NOT NULL,
             "行政區"	TEXT NOT NULL,
@@ -32,7 +32,7 @@ def __create_table(conn:sqlite3.Connection):
             PRIMARY KEY("id" AUTOINCREMENT),
             UNIQUE(站點名稱,更新時間) ON CONFLICT REPLACE
 		);
-		'''
+	'''
     )
     conn.commit()
     cursor.close()

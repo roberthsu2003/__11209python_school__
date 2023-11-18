@@ -36,8 +36,8 @@ def __download_aqi_data()->list[dict]:
 def __create_table(conn:sqlite3.Connection):
     cursor = conn.cursor()
     cursor.execute(
-        '''
-		CREATE TABLE IF NOT EXISTS 空氣品質(
+    '''
+        CREATE TABLE IF NOT EXISTS 空氣品質(
             "id" INTEGER,
             "測站編號" INTEGER,
             "測站名稱" TEXT NOT NULL,
@@ -53,7 +53,7 @@ def __create_table(conn:sqlite3.Connection):
             PRIMARY KEY("id" AUTOINCREMENT),
             UNIQUE(測站名稱,更新時間) ON CONFLICT REPLACE
 		);
-		'''
+	'''
     )
     conn.commit()
 

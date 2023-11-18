@@ -22,14 +22,14 @@ def __create_table(conn:sqlite3.Connection):
         '''
 		CREATE TABLE IF NOT EXISTS 台北市youbike(
 			"id"	INTEGER,
-			"站點名稱"	TEXT NOT NULL,
-			"行政區"	TEXT NOT NULL,
-			"更新時間"	TEXT NOT NULL,
-			"地址"	TEXT,
-			"總車輛數"	INTEGER,
-			"可借"	INTEGER,
-			"可還"	INTEGER,
-			PRIMARY KEY("id" AUTOINCREMENT),
+            "站點名稱"	TEXT NOT NULL,
+            "行政區"	TEXT NOT NULL,
+            "更新時間"	TEXT NOT NULL,
+            "地址"	TEXT,
+            "總車輛數"	INTEGER,
+            "可借"	INTEGER,
+            "可還"	INTEGER,
+            PRIMARY KEY("id" AUTOINCREMENT),
             UNIQUE(站點名稱,更新時間) ON CONFLICT REPLACE
 		);
 		'''

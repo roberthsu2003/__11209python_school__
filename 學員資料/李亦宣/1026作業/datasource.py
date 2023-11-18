@@ -12,9 +12,9 @@ def __download_aqi_data()->list[dict]:
     response.raise_for_status()
     print('下載成功')
     data = response.json()
-    records = data.get("records",[])
+    records = data.get("records",[]) #取得dictionary中records的值,如果值存在傳回值,如果不存在傳回[]
     record_list = []
-    for record in records:
+    for record in records:      #一筆一筆抓出來存進去record_list
         record_dict = {
             "siteid": record['siteid'],
             "sitename": record["sitename"],
@@ -60,20 +60,21 @@ def __create_table(conn:sqlite3.Connection):
 
 def __insert_data(conn:sqlite3.Connection,values:list[any])->None:
     cursor = conn.cursor()
-    current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')     #取得系統時間並格式化
     sql = '''
 		REPLACE INTO 空氣品質(測站編號,測站名稱,測站英文名稱,空品區,城市,鄉鎮,測站地址,經度,緯度,測站類型,更新時間)
-		VALUES(?,?,?,?,?,?,?,?,?,?,?)
+        VALUES(?,?,?,?,?,?,?,?,?,?,?)
 	'''
     values.append(current_time) 
-    cursor.execute(sql,values)
+    #print(values) #會先取得insert_data裡的資料再加入current_time, current_time會被加在list的最後
+    cursor.execute(sql,values)      #執行sql, ? (替換)-> values
     conn.commit()
 
 def update_sqlite_data()->None:
     data = __download_aqi_data()
     conn = sqlite3.connect("空氣品質.db")
     __create_table(conn)
-    for item in data:
+    for item in data:     #for item in data['records']: -> 不用先把records資料存進list
         #print(item)
         __insert_data(conn,values=[item['siteid'],item['sitename'], item['siteengname'], item['areaname'], item['county'], item['township'], item['siteaddress'], item['twd97lon'], item['twd97lat'], item['sitetype']])
     conn.close()

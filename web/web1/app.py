@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,url_for
 
 app = Flask(__name__)
 
@@ -25,3 +25,9 @@ def show_post(post_id):
 def show_subpath(subpath):
     # show the subpath after /path/
     return f'<h1>Subpath {subpath}</h1>'
+
+@app.route('/url')
+def url():
+    print(url_for('hello'))
+    print(url_for('show_user_profile',username="RobertHsu"))
+    return "ABC"

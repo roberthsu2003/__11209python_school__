@@ -1,8 +1,11 @@
 from flask import Flask,url_for,render_template
 import random
 import pandas as pd
+from auth import auth
+
 
 app = Flask(__name__)
+app.register_blueprint(auth.bp)
 
 @app.route('/')
 def index():
@@ -16,3 +19,4 @@ def get_dataFrame()->pd.DataFrame:
             ['李XX',92, 79, 85]]    
     
     return pd.DataFrame(data,columns=["姓名","國文","英文","數學"])
+

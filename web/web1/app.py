@@ -30,4 +30,5 @@ def show_subpath(subpath):
 def url():
     print(url_for('hello'))
     print(url_for('show_user_profile',username="RobertHsu"))
+    print(url_for('static', filename='css/style.css'))
     return "ABC"

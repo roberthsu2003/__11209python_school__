@@ -4,6 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    print("debug")
     return 'Index Page'
 
 @app.route('/hello')

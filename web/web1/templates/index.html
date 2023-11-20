@@ -8,6 +8,6 @@
 <body>
     <h1>Hello! Flask</h1>
     <h2>name:{{name}}</h2>
-    <h2>age:{{age}}</h2>
+    {{dataFrame.to_html() | safe}}
 </body>
 </html>

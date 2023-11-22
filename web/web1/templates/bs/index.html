@@ -3,3 +3,13 @@
 {% block csslink %}
 <link rel="stylesheet" href="{{url_for('static', filename='css/bs/index.css')}}">
 {% endblock %}
+
+{% block head %}
+{{ super() }}
+
+<style>
+body {
+    background-color: blueviolet;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,28 @@
+body{
+    background-color: aliceblue;
+}
+@media (min-width: 576px) {
+    body{
+        background-color:antiquewhite;
+    }
+ }
+@media (min-width: 768px) { 
+    body{
+        background-color:aqua;
+    }
+ }
+@media (min-width: 992px) {
+    body{
+        background-color:azure;
+    }
+ }
+@media (min-width: 1200px) {
+    body{
+        background-color:brown;
+    }
+ }
+@media (min-width: 1400px) { 
+    body{
+        background-color:blueviolet;
+    }
+ }

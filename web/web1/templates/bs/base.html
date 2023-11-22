@@ -10,13 +10,18 @@
     {% block csslink %}{% endblock %}
     <title>{% block title %}{% endblock %}</title>
     {% endblock %}
+    <style>
+        body{
+            background-color: aliceblue;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="main" class="container-md">
+    <div class="container-md">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a class="navbar-brand" href="{{url_for('bs.index')}}">職能發展學院</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -24,17 +29,15 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="{{url_for('bs.index')}}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Features</a>
+                            <a class="nav-link" href="{{url_for('bs.product')}}">產品</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Pricing</a>
+                            <a class="nav-link" href="{{url_for('bs.profile')}}">個人簡介</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                        </li>
+                        
                     </ul>
                 </div>
             </div>

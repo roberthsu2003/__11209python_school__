@@ -140,6 +140,7 @@ def __download_credit_data() -> csv:
             file_path = os.path.join(path, file)
             data = pd.read_csv(file_path)
             merged_data = pd.concat([merged_data, data], ignore_index=True)
+        merged_data.drop_duplicates(inplace=True)
         merged_data.to_csv(f"{item}.csv", index=False)
         print(f"{item}.csv建立成功")
 
@@ -153,7 +154,7 @@ def __download_credit_data() -> csv:
                 csv_writer.writeheader()
 
                 for row in csv_reader:
-                    # 使用get方法，如果找不到對應的鍵，就保持原來的值
+                    #---找不到對應的值，則保持原本的值---#
                     row["地區"] = area_code.get(row["地區"], row["地區"])
 
                     if "性別" in fieldnames:

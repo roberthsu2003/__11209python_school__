@@ -148,7 +148,7 @@ class Window(tk.Tk):
         self.botton = tk.Button(
             topFrame, text="搜尋", state="active", command=self.load_treeview, width=30
         ).grid(row=5, column=0, padx=10, pady=20, columnspan=2)
-        topFrame.pack(side=tk.LEFT, padx=(5, 5), fill="y")
+        topFrame.pack(side=tk.LEFT, padx=(5, 5), pady=(0, 5),fill="y")
 
         # -------------資料呈現------------#
         middleFrame = ttk.Labelframe(self, text="資料")

@@ -20,21 +20,23 @@ matplotlib.rc('font', family='Noto Sans TC')
 
 # 設定全域變數
 fig = None
-fig_boxplot = None
+fig_scatter = None
 fig_barplot = None
 fig_boxplot1 = None
 ax = None
-ax_boxplot = None
+ax_scatter = None
 ax_barplot = None
 ax_boxplot1 = None
 canvas = None
-canvas_boxplot = None
+canvas_scatter = None
 canvas_barplot = None
 canvas_boxplot1 = None
 
 # 創建圖表框
+
+
 def create_frames(root):
-    global fig, fig_boxplot, fig_barplot, fig_boxplot1, ax, ax_boxplot, ax_barplot, ax_boxplot1, canvas, canvas_boxplot, canvas_barplot, canvas_boxplot1
+    global fig, fig_scatter, fig_barplot, fig_boxplot1, ax, ax_scatter, ax_barplot, ax_boxplot1, canvas, canvas_scatter, canvas_barplot, canvas_boxplot1
     frames = {}
     for i in range(2):  # 2 行
         for j in range(2):  # 2 列
@@ -45,41 +47,44 @@ def create_frames(root):
             label.pack(padx=5, pady=5)
             frame.configure(style='Blue.TFrame')
             frames[f"frame_{i+1}_{j+1}"] = frame
-
+    # ------圓餅圖位置------
     frame_1_1 = root.grid_slaves(row=0, column=0)[0]
-    fig, ax = plt.subplots(figsize=(4,2))  # 创建一个空的長條圖图表
+    fig, ax = plt.subplots(figsize=(4, 2))  # 創建一個空的畫布
     ax.set_facecolor('none')
-    canvas = FigureCanvasTkAgg(fig, master=frame_1_1)  # 将長條圖嵌入 Tkinter Frame 中
+    canvas = FigureCanvasTkAgg(fig, master=frame_1_1)
     ax.set_facecolor('none')
     canvas.draw()
     canvas.get_tk_widget().pack(padx=0, pady=18)
     canvas.get_tk_widget().pack_propagate(False)
-
+    # ------長條圖位置------
     frame_1_2 = root.grid_slaves(row=0, column=1)[0]
-    fig_barplot, ax_barplot = plt.subplots(figsize=(4,2))  # 创建一个空的盒鬚圖图表
+    fig_barplot, ax_barplot = plt.subplots(figsize=(4, 2))  # 創建一個空的畫布
     canvas_barplot = FigureCanvasTkAgg(
-        fig_barplot, master=frame_1_2)  # 将盒鬚圖嵌入 Tkinter Frame 中
+        fig_barplot, master=frame_1_2)
     canvas_barplot.draw()
     canvas_barplot.get_tk_widget().pack(padx=0, pady=18)
-
+    # ------XY散點圖位置------
     frame_2_1 = root.grid_slaves(row=1, column=0)[0]
-    fig_boxplot, ax_boxplot = plt.subplots(figsize=(4,2))  # 创建一个空的盒鬚圖图表
-    canvas_boxplot = FigureCanvasTkAgg(
-        fig_boxplot, master=frame_2_1)  # 将盒鬚圖嵌入 Tkinter Frame 中
-    canvas_boxplot.draw()
-    canvas_boxplot.get_tk_widget().pack(padx=0, pady=18)
-
+    fig_scatter, ax_scatter = plt.subplots(figsize=(4, 2))  # 創建一個空的畫布
+    canvas_scatter = FigureCanvasTkAgg(
+        fig_scatter, master=frame_2_1)
+    canvas_scatter.draw()
+    canvas_scatter.get_tk_widget().pack(padx=0, pady=18)
+    # ------盒鬚圖位置------
     frame_2_2 = root.grid_slaves(row=1, column=1)[0]
-    fig_boxplot1, ax_boxplot1 = plt.subplots(figsize=(4,2))  # 创建一个空的盒鬚圖图表
+    fig_boxplot1, ax_boxplot1 = plt.subplots(figsize=(4, 2))  # 創建一個空的畫布
     canvas_boxplot1 = FigureCanvasTkAgg(
-        fig_boxplot1, master=frame_2_2)  # 将盒鬚圖嵌入 Tkinter Frame 中
+        fig_boxplot1, master=frame_2_2)
     canvas_boxplot1.draw()
     canvas_boxplot1.get_tk_widget().pack(padx=0, pady=18)
+
 
 # ------讀取CSV檔，導入DataFrame------
 df = pd.read_csv('10.csv')
 
 # ------定義創建combobox的函式
+
+
 def create_combobox(left_frame, label_text, values):
     label = tb.Label(left_frame, text=label_text)
     label.pack()
@@ -96,6 +101,8 @@ def create_combobox(left_frame, label_text, values):
     return combo_var
 
 # ------定義搜尋按鈕觸發動作函式------
+
+
 def fetch_data():
     global df
     df1 = df  # 傳入全域變數df
@@ -120,8 +127,8 @@ def fetch_data():
         df1 = df1.loc[condition4]
 
     df1 = df1[df1['總賠償金額'] != 0]
-    
-    #將總賠償金額依金額大小排序
+
+    # 將總賠償金額依金額大小排序
     df1 = df1.sort_values(by='總賠償金額', ascending=True, ignore_index=True)
 
     # 計算敘述性統計資料
@@ -154,19 +161,20 @@ def fetch_data():
 
     # 获取年月数据作为 X 轴
     IDname = df1['ID']
-    colors=['#2cbdfe', '#2fb9fc', '#33b4fa', '#36b0f8',
-               '#3aacf6', '#3da8f4', '#41a3f2', '#449ff0',
-               '#489bee', '#4b97ec', '#4f92ea', '#528ee8',
-               '#568ae6', '#5986e4', '#5c81e2', '#607de0',
-               '#6379de', '#6775dc', '#6a70da', '#6e6cd8',
-               '#7168d7', '#7564d5', '#785fd3', '#7c5bd1',
-               '#7f57cf', '#8353cd', '#864ecb', '#894ac9',
-               '#8d46c7', '#9042c5', '#943dc3', '#9739c1',
-               '#9b35bf', '#9e31bd', '#a22cbb', '#a528b9',
-               '#a924b7', '#ac20b5', '#b01bb3', '#b317b1']
+    colors = ['#2cbdfe', '#2fb9fc', '#33b4fa', '#36b0f8',
+              '#3aacf6', '#3da8f4', '#41a3f2', '#449ff0',
+              '#489bee', '#4b97ec', '#4f92ea', '#528ee8',
+              '#568ae6', '#5986e4', '#5c81e2', '#607de0',
+              '#6379de', '#6775dc', '#6a70da', '#6e6cd8',
+              '#7168d7', '#7564d5', '#785fd3', '#7c5bd1',
+              '#7f57cf', '#8353cd', '#864ecb', '#894ac9',
+              '#8d46c7', '#9042c5', '#943dc3', '#9739c1',
+              '#9b35bf', '#9e31bd', '#a22cbb', '#a528b9',
+              '#a924b7', '#ac20b5', '#b01bb3', '#b317b1']
     ax.set_xticks([])
     explode = tuple(0.01 for _ in range(len(total_compensation)))
-    ax.pie(total_compensation, explode=explode, autopct=None, startangle=90,colors=colors)
+    ax.pie(total_compensation, explode=explode,
+           autopct=None, startangle=90, colors=colors)
     ax.set_xlabel(None)
     ax.set_ylabel('總賠償金額')
     ax.set_title(f'{area} 案件圓餅圖')
@@ -174,10 +182,9 @@ def fetch_data():
     fig.tight_layout()
     canvas.draw()
 
-    #canvas_barplot.draw()
     canvas_barplot.get_tk_widget().pack()
     ax_barplot.clear()
-    ax_barplot.bar(IDname, total_compensation,color=colors)
+    ax_barplot.bar(IDname, total_compensation, color=colors)
     ax_barplot.set_xticks([])
     ax_barplot.set_yscale('log')  # 设置 Y 軸为對數尺度
     ax_barplot.set_xlabel(None)
@@ -187,25 +194,26 @@ def fetch_data():
     fig_barplot.tight_layout()
     canvas_barplot.draw()
 
-    #canvas_boxplot.draw()
-    canvas_boxplot.get_tk_widget().pack()
-    ax_boxplot.clear()
-    ax_boxplot.scatter( df1.index,np.log10(df1['總賠償金額']))
-    ax_boxplot.set_xticks([])
-    ax_boxplot.set_ylabel('總賠償金額')
-    ax_boxplot.set_title(f'{area} 案件XY散佈圖')
-    ax_boxplot.grid(True)
-    fig_boxplot.tight_layout()
-    canvas_boxplot.draw()
+    canvas_scatter.get_tk_widget().pack()
+    ax_scatter.clear()
+    ax_scatter.scatter(df1.index, np.log10(df1['總賠償金額']))
+    ax_scatter.set_xticks([])
+    ax_scatter.set_ylabel('總賠償金額')
+    ax_scatter.set_title(f'{area} 案件XY散佈圖')
+    ax_scatter.grid(True)
+    fig_scatter.tight_layout()
+    canvas_scatter.draw()
 
     ax_boxplot1.clear()
-    sns.boxplot(y=np.log10(df1['總賠償金額']), ax=ax_boxplot1,color='#894ac9')
+    sns.boxplot(y=np.log10(df1['總賠償金額']), ax=ax_boxplot1, color='#894ac9')
     ax_boxplot1.set_title(f'{area} 案件盒鬚圖')
     ax_boxplot1.grid(True)
     fig_boxplot1.tight_layout()
     canvas_boxplot1.draw()
 
 # ------定義雙擊判決列表觸發動作函式------
+
+
 def on_double_click(event):
     global df
     df2 = df  # 傳入全域變數df
@@ -283,7 +291,8 @@ scrollbar.config(command=listbox.yview)
 listbox.bind("<Double-Button-1>", on_double_click)
 
 # ------插入敘述性統計資料------
-text_box = tk.Text(left_frame, height=9, bd=0, highlightbackground=root.cget('bg'))
+text_box = tk.Text(left_frame, height=9, bd=0,
+                   highlightbackground=root.cget('bg'))
 text_box.pack(fill='x', anchor=tk.W)
 
 # ------創建右側邊框(顯示圖表)------
@@ -294,11 +303,13 @@ right_frame.pack_propagate(False)
 create_frames(right_frame)
 
 # ------確保視窗關閉時，程式能順利終止------
+
+
 def on_closing():
-    root.destroy()  # This function will be called when the window is closed
-    root.quit()     # Terminate the main loop
+    root.destroy()
+    root.quit()
 
 
 if __name__ == '__main__':
-    root.protocol("WM_DELETE_WINDOW", on_closing)  # Call on_closing when window is closed
+    root.protocol("WM_DELETE_WINDOW", on_closing)
     root.mainloop()

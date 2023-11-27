@@ -42,7 +42,7 @@ def create_frames(root):
         for j in range(2):  # 2 列
             frame = tb.Frame(root, borderwidth=2,
                              relief="solid", width=300, height=100)
-            frame.grid(row=i, column=j, padx=3, pady=3)  # 添加间距
+            frame.grid(row=i, column=j, padx=3, pady=3)  # 添加間距
             label = tb.Label(frame, text=f"圖 {i+1}-{j+1}")
             label.pack(padx=5, pady=5)
             frame.configure(style='Blue.TFrame')
@@ -145,7 +145,7 @@ def fetch_data():
     # 將敘述性統計資料打包成字串
     textdata = f"第一四分位數(Q1): {Q1}\n第三四分位數(Q3): {Q3}\n中位數(IQR): {IQR}\n上邊界: {upper_bound}\n下邊界: {lower_bound}\n高於上邊界的數量: {count_above}\n低於下邊界的數量: {count_below}"
 
-    # 在 Text 组件中插入数据
+    # 在 Text 组件中插入數據
     text_box.delete("1.0", tk.END)
     text_box.insert(tk.END, textdata)
 
@@ -156,10 +156,10 @@ def fetch_data():
         listbox.insert(tk.END, value[:-11])
     ax.clear()
 
-    # 获取總賠償金額数据
+    # 獲取總賠償金額數據
     total_compensation = df1['總賠償金額']
 
-    # 获取年月数据作为 X 轴
+    # 獲取年月數據做為X軸
     IDname = df1['ID']
     colors = ['#2cbdfe', '#2fb9fc', '#33b4fa', '#36b0f8',
               '#3aacf6', '#3da8f4', '#41a3f2', '#449ff0',

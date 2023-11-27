@@ -171,6 +171,7 @@ def fetch_data():
               '#8d46c7', '#9042c5', '#943dc3', '#9739c1',
               '#9b35bf', '#9e31bd', '#a22cbb', '#a528b9',
               '#a924b7', '#ac20b5', '#b01bb3', '#b317b1']
+    # ------插入圓餅圖------
     ax.set_xticks([])
     explode = tuple(0.01 for _ in range(len(total_compensation)))
     ax.pie(total_compensation, explode=explode,
@@ -182,6 +183,7 @@ def fetch_data():
     fig.tight_layout()
     canvas.draw()
 
+    # ------插入長條圖------
     canvas_barplot.get_tk_widget().pack()
     ax_barplot.clear()
     ax_barplot.bar(IDname, total_compensation, color=colors)
@@ -194,6 +196,7 @@ def fetch_data():
     fig_barplot.tight_layout()
     canvas_barplot.draw()
 
+    # ------插入XY散佈圖------
     canvas_scatter.get_tk_widget().pack()
     ax_scatter.clear()
     ax_scatter.scatter(df1.index, np.log10(df1['總賠償金額']))
@@ -204,6 +207,7 @@ def fetch_data():
     fig_scatter.tight_layout()
     canvas_scatter.draw()
 
+    # ------插入盒鬚圖------
     ax_boxplot1.clear()
     sns.boxplot(y=np.log10(df1['總賠償金額']), ax=ax_boxplot1, color='#894ac9')
     ax_boxplot1.set_title(f'{area} 案件盒鬚圖')

@@ -550,7 +550,7 @@ class ShowDetail(Dialog):
         super().__init__(parent, **kwargs)
 
     def body(self, master):
-        self.geometry("200x250")
+        self.geometry("200x260")
         self.GetDataInfo_var = tk.StringVar()
         mainFrame = tk.Label(
             master, textvariable=self.GetDataInfo_var, padx=10, pady=10
@@ -558,7 +558,7 @@ class ShowDetail(Dialog):
 
         try:
             for col, value in zip(self.columns, self.data):
-                dataInfo = tk.Label(master, text=f"{col}:  {value}")
+                dataInfo = tk.Label(master, text=f"{col}:  {value}", font=("Microsoft JhengHei", 10, "bold"))
                 dataInfo.pack(pady=(6,1), anchor="nw")
         except Exception as e:
             print(f"Exception in ShowDetail: {e}")

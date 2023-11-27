@@ -7,12 +7,13 @@ from ttkbootstrap.constants import *
 import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib.font_manager import fontManager
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import seaborn as sns
 import pandas as pd
 import numpy as np
 import csv
 import subprocess
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+
 
 # 加入中文字型設定：Google-思源正黑體
 fontManager.addfont('NotoSansTC-VariableFont_wght.ttf')
@@ -159,7 +160,7 @@ def fetch_data():
     # 獲取總賠償金額數據
     total_compensation = df1['總賠償金額']
 
-    # 獲取年月數據做為X軸
+    # 以ID為X軸
     IDname = df1['ID']
     colors = ['#2cbdfe', '#2fb9fc', '#33b4fa', '#36b0f8',
               '#3aacf6', '#3da8f4', '#41a3f2', '#449ff0',
@@ -171,6 +172,7 @@ def fetch_data():
               '#8d46c7', '#9042c5', '#943dc3', '#9739c1',
               '#9b35bf', '#9e31bd', '#a22cbb', '#a528b9',
               '#a924b7', '#ac20b5', '#b01bb3', '#b317b1']
+    
     # ------插入圓餅圖------
     ax.set_xticks([])
     explode = tuple(0.01 for _ in range(len(total_compensation)))

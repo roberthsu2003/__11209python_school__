@@ -550,6 +550,7 @@ class ShowDetail(Dialog):
         super().__init__(parent, **kwargs)
 
     def body(self, master):
+        self.geometry("200x250")
         self.GetDataInfo_var = tk.StringVar()
         mainFrame = tk.Label(
             master, textvariable=self.GetDataInfo_var, padx=10, pady=10
@@ -558,7 +559,7 @@ class ShowDetail(Dialog):
         try:
             for col, value in zip(self.columns, self.data):
                 dataInfo = tk.Label(master, text=f"{col}:  {value}")
-                dataInfo.pack(pady=1, anchor="nw")
+                dataInfo.pack(pady=(6,1), anchor="nw")
         except Exception as e:
             print(f"Exception in ShowDetail: {e}")
             print("Columns:", self.columns)
@@ -567,7 +568,7 @@ class ShowDetail(Dialog):
     def buttonbox(self):
         box = tk.Frame(self)
         w = tk.Button(box, text="確認", width=10, command=self.ok, default="active")
-        w.pack(padx=5, pady=(5, 20))
+        w.pack(padx=5, pady=(5, 10))
         self.bind("<Return>", self.ok)
 
         box.pack()

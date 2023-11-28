@@ -19,6 +19,7 @@ import subprocess
 fontManager.addfont('NotoSansTC-VariableFont_wght.ttf')
 matplotlib.rc('font', family='Noto Sans TC')
 
+
 # 設定全域變數
 fig = None
 fig_scatter = None
@@ -32,60 +33,56 @@ canvas = None
 canvas_scatter = None
 canvas_barplot = None
 canvas_boxplot1 = None
+text_box = None
 
 # 創建圖表框
 
 
 def create_frames(root):
-    global fig, fig_scatter, fig_barplot, fig_boxplot1, ax, ax_scatter, ax_barplot, ax_boxplot1, canvas, canvas_scatter, canvas_barplot, canvas_boxplot1
+    global fig, fig_scatter, fig_barplot, fig_boxplot1, ax, ax_scatter, ax_barplot, ax_boxplot1, canvas, canvas_scatter, canvas_barplot, canvas_boxplot1, text_box
     frames = {}
-    for i in range(2):  # 2 行
-        for j in range(2):  # 2 列
+    for (x, y, z) in [(0,0,'圓餅圖'), (0,1,'直方圖'), (1,0,'統計資料'), (1,1,'箱形圖')]:
             frame = tb.Frame(root, borderwidth=2,
                              relief="solid", width=300, height=100)
-            frame.grid(row=i, column=j, padx=3, pady=3)  # 添加間距
-            label = tb.Label(frame, text=f"圖 {i+1}-{j+1}")
-            label.pack(padx=5, pady=5)
+            frame.grid(row=x, column=y, padx=3, pady=3)  # 添加間距
+            label = tb.Label(frame, text=z, font=16)
+            label.pack(padx=5,pady=(5,0))
             frame.configure(style='Blue.TFrame')
-            frames[f"frame_{i+1}_{j+1}"] = frame
     # ------圓餅圖位置------
     frame_1_1 = root.grid_slaves(row=0, column=0)[0]
-    fig, ax = plt.subplots(figsize=(4, 2))  # 創建一個空的畫布
+    fig, ax = plt.subplots(figsize=(4.5,3))  # 創建一個空的畫布
     ax.set_facecolor('none')
     canvas = FigureCanvasTkAgg(fig, master=frame_1_1)
     ax.set_facecolor('none')
     canvas.draw()
-    canvas.get_tk_widget().pack(padx=0, pady=18)
+    canvas.get_tk_widget().pack(pady=9)
     canvas.get_tk_widget().pack_propagate(False)
     # ------長條圖位置------
     frame_1_2 = root.grid_slaves(row=0, column=1)[0]
-    fig_barplot, ax_barplot = plt.subplots(figsize=(4, 2))  # 創建一個空的畫布
+    fig_barplot, ax_barplot = plt.subplots(figsize=(4.5,3))  # 創建一個空的畫布
     canvas_barplot = FigureCanvasTkAgg(
         fig_barplot, master=frame_1_2)
     canvas_barplot.draw()
-    canvas_barplot.get_tk_widget().pack(padx=0, pady=18)
-    # ------XY散點圖位置------
+    canvas_barplot.get_tk_widget().pack(pady=9)
+    # ------text_box位置------
     frame_2_1 = root.grid_slaves(row=1, column=0)[0]
-    fig_scatter, ax_scatter = plt.subplots(figsize=(4, 2))  # 創建一個空的畫布
-    canvas_scatter = FigureCanvasTkAgg(
-        fig_scatter, master=frame_2_1)
-    canvas_scatter.draw()
-    canvas_scatter.get_tk_widget().pack(padx=0, pady=18)
+    # ------插入敘述性統計資料------
+    text_box = tk.Text(frame_2_1, height=15, width=55,
+                       bd=-1, font=(16), spacing3=5)
+    text_box.pack()
     # ------盒鬚圖位置------
     frame_2_2 = root.grid_slaves(row=1, column=1)[0]
-    fig_boxplot1, ax_boxplot1 = plt.subplots(figsize=(4, 2))  # 創建一個空的畫布
+    fig_boxplot1, ax_boxplot1 = plt.subplots(figsize=(4.5,3))  # 創建一個空的畫布
     canvas_boxplot1 = FigureCanvasTkAgg(
         fig_boxplot1, master=frame_2_2)
     canvas_boxplot1.draw()
-    canvas_boxplot1.get_tk_widget().pack(padx=0, pady=18)
+    canvas_boxplot1.get_tk_widget().pack(pady=9)
 
 
 # ------讀取CSV檔，導入DataFrame------
 df = pd.read_csv('10.csv')
 
 # ------定義創建combobox的函式
-
-
 def create_combobox(left_frame, label_text, values):
     label = tb.Label(left_frame, text=label_text)
     label.pack()
@@ -133,6 +130,11 @@ def fetch_data():
     df1 = df1.sort_values(by='總賠償金額', ascending=True, ignore_index=True)
 
     # 計算敘述性統計資料
+    
+    max = df1['總賠償金額'].max()
+    min = df1['總賠償金額'].min()
+    mean = df1['總賠償金額'].mean()
+    median = df1['總賠償金額'].median()
     Q1 = df1['總賠償金額'].quantile(0.25)
     Q3 = df1['總賠償金額'].quantile(0.75)
     IQR = Q3 - Q1
@@ -141,10 +143,9 @@ def fetch_data():
     outliers_above = df1[df1['總賠償金額'] > upper_bound]
     outliers_below = df1[df1['總賠償金額'] < lower_bound]
     count_above = len(outliers_above)
-    count_below = len(outliers_below)
 
     # 將敘述性統計資料打包成字串
-    textdata = f"第一四分位數(Q1): {Q1}\n第三四分位數(Q3): {Q3}\n中位數(IQR): {IQR}\n上邊界: {upper_bound}\n下邊界: {lower_bound}\n高於上邊界的數量: {count_above}\n低於下邊界的數量: {count_below}"
+    textdata = f"最大值(MAX): {max}\n最小值(MIN): {min}\n平均值(MEAN): {mean}\n中位數(MEDIAN): {median}\n第一四分位數(Q1): {Q1}\n第三四分位數(Q3): {Q3}\n四分位距(IQR): {IQR}\n上邊界: {upper_bound}\n下邊界: {lower_bound}\n高於上邊界的數量: {count_above}"
 
     # 在 Text 组件中插入數據
     text_box.delete("1.0", tk.END)
@@ -163,24 +164,23 @@ def fetch_data():
     # 以ID為X軸
     IDname = df1['ID']
     colors = ['#2cbdfe', '#2fb9fc', '#33b4fa', '#36b0f8',
-              '#3aacf6', '#3da8f4', '#41a3f2', '#449ff0',
-              '#489bee', '#4b97ec', '#4f92ea', '#528ee8',
-              '#568ae6', '#5986e4', '#5c81e2', '#607de0',
-              '#6379de', '#6775dc', '#6a70da', '#6e6cd8',
-              '#7168d7', '#7564d5', '#785fd3', '#7c5bd1',
-              '#7f57cf', '#8353cd', '#864ecb', '#894ac9',
-              '#8d46c7', '#9042c5', '#943dc3', '#9739c1',
-              '#9b35bf', '#9e31bd', '#a22cbb', '#a528b9',
-              '#a924b7', '#ac20b5', '#b01bb3', '#b317b1']
-    
+            '#3aacf6', '#3da8f4', '#41a3f2', '#449ff0',
+            '#489bee', '#4b97ec', '#4f92ea', '#528ee8',
+            '#568ae6', '#5986e4', '#5c81e2', '#607de0',
+            '#6379de', '#6775dc', '#6a70da', '#6e6cd8',
+            '#7168d7', '#7564d5', '#785fd3', '#7c5bd1',
+            '#7f57cf', '#8353cd', '#864ecb', '#894ac9',
+            '#8d46c7', '#9042c5', '#943dc3', '#9739c1',
+            '#9b35bf', '#9e31bd', '#a22cbb', '#a528b9',
+            '#a924b7', '#ac20b5', '#b01bb3', '#b317b1']
+
     # ------插入圓餅圖------
     ax.set_xticks([])
     explode = tuple(0.01 for _ in range(len(total_compensation)))
     ax.pie(total_compensation, explode=explode,
-           autopct=None, startangle=90, colors=colors)
+        autopct=None, startangle=90, colors=colors)
     ax.set_xlabel(None)
     ax.set_ylabel('總賠償金額')
-    ax.set_title(f'{area} 案件圓餅圖')
     ax.grid(True)
     fig.tight_layout()
     canvas.draw()
@@ -193,26 +193,14 @@ def fetch_data():
     ax_barplot.set_yscale('log')  # 设置 Y 軸为對數尺度
     ax_barplot.set_xlabel(None)
     ax_barplot.set_ylabel('總賠償金額（對數變換）')
-    ax_barplot.set_title(f'{area} 案件長條圖')
     ax_barplot.grid(True)
     fig_barplot.tight_layout()
     canvas_barplot.draw()
 
-    # ------插入XY散佈圖------
-    canvas_scatter.get_tk_widget().pack()
-    ax_scatter.clear()
-    ax_scatter.scatter(df1.index, np.log10(df1['總賠償金額']))
-    ax_scatter.set_xticks([])
-    ax_scatter.set_ylabel('總賠償金額')
-    ax_scatter.set_title(f'{area} 案件XY散佈圖')
-    ax_scatter.grid(True)
-    fig_scatter.tight_layout()
-    canvas_scatter.draw()
 
-    # ------插入盒鬚圖------
+    # ------插入箱形圖------
     ax_boxplot1.clear()
     sns.boxplot(y=np.log10(df1['總賠償金額']), ax=ax_boxplot1, color='#894ac9')
-    ax_boxplot1.set_title(f'{area} 案件盒鬚圖')
     ax_boxplot1.grid(True)
     fig_boxplot1.tight_layout()
     canvas_boxplot1.draw()
@@ -247,8 +235,8 @@ def on_double_click(event):
 
 
 # ------創建視窗------
-root = tb.Window(size=(1170, 600), position=(
-    300, 225), resizable=(False, False), title='車禍判決賠償金額視覺化')
+root = tb.Window(size=(1280, 768), position=(
+    300, 200), resizable=(False, False), title='車禍判決賠償金額視覺化')
 
 # ------創建左側邊框(控制面板)------
 left_frame = tb.Frame(root,
@@ -256,11 +244,11 @@ left_frame = tb.Frame(root,
                       borderwidth=2,
                       relief="solid",
                       width=300,
-                      height=580)
+                      height=732)
 left_frame.pack_propagate(False)  # 避免左側邊框自動縮小
 left_frame.pack(side=LEFT,
                 padx=(10, 0),
-                pady=5)
+                pady=10)
 
 # ------控制變量(地區、年月、原告、被告)combobox並傳回變數
 regions = ['全部案件', '基隆', '台北', '新北', '桃園', '新竹', '苗栗', '台中', '南投',
@@ -287,24 +275,18 @@ listbox_frame.pack(fill='x', pady=5)
 scrollbar = tb.Scrollbar(listbox_frame)
 scrollbar.pack(side='right', fill='y')
 listbox = tk.Listbox(listbox_frame,
-                     height=9,
+                     height=27,
                      yscrollcommand=scrollbar.set)
-listbox.pack(fill='x')
+listbox.pack(fill='x', expand=True)
 scrollbar.config(command=listbox.yview)
-
 
 # ------綁定點擊事件------
 listbox.bind("<Double-Button-1>", on_double_click)
 
-# ------插入敘述性統計資料------
-text_box = tk.Text(left_frame, height=9, bd=0,
-                   highlightbackground=root.cget('bg'))
-text_box.pack(fill='x', anchor=tk.W)
-
 # ------創建右側邊框(顯示圖表)------
 right_frame = tb.Frame(root, padding=10, borderwidth=2,
-                       relief="solid", width=700, height=780)
-right_frame.pack(side=LEFT, padx=10, pady=5)
+                       relief="solid", width=700, height=748)
+right_frame.pack(side=LEFT, padx=10, pady=10)
 right_frame.pack_propagate(False)
 create_frames(right_frame)
 

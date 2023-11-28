@@ -27,13 +27,7 @@ class Window(tk.Tk):
         #print(ds.lastest_datetime_data())
         titleFrame = tk.Frame(self,relief=tk.GROOVE,borderwidth=1)
         tk.Label(titleFrame,text="台北市 YouBike 2.0 站點即時資訊",font=("arial", 36), bg="#333333", fg='#ffffff',padx=10,pady=10).pack(padx=10,pady=10)
-        titleFrame.pack(pady=10)
-        
-        # "立即更新"按鈕未完成，錄影時先不顯示。
-        # updateButton = tk.Button(titleFrame,text="立即更新",bg="#dbdbdb",fg="#333333",font=('arial',16),command=lambda:ds.download())
-        # updateButton.bind(Window.buttonupdata())
-        # updateButton.pack(pady=(0,5))
-       
+        titleFrame.pack(pady=10)       
         #---------------------------------------
 
         col = 13
@@ -57,11 +51,6 @@ class Window(tk.Tk):
         middleFrame.pack(fill='x', padx=10)
         #---------------建立treeView---------------
         bottomFrame = tk.Frame(self)
-        
-        # 有id欄位
-        # self.youbikeTreeView = YoubikeTreeView(bottomFrame,show="headings", columns=('sno','sna','sarea','mday','ar','tot','sbi','bemp'), height=20)
-
-        # 無id欄位
         self.youbikeTreeView = YoubikeTreeView(bottomFrame,show="headings",
                                                columns=('sna','sarea','mday','ar','tot','sbi','bemp'),
                                                height=40)
@@ -92,17 +81,11 @@ class Window(tk.Tk):
 
         self.map_widget = MapDialog(self,title=areaName,info=areaList)
 
-    #def buttonupdata():
-        #ds.download()
-
 def main():    
     def update_data(Window)->None:
-        #ds.updata_sqlite_data()
         #-----------更新treeView資料---------------
         lastest_data = ds.lastest_datetime_data()
         Window.youbikeTreeView.update_content(lastest_data)
-
-        #Window.after(10*60*10000,update_data,window) #每隔10分鐘持續七天
 
     window = Window()
     window.title('台北市 YouBike 2.0 站點即時資訊')

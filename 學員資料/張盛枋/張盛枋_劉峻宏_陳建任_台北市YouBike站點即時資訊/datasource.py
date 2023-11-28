@@ -76,7 +76,6 @@ def lastest_datetime_data()->list[tuple]:
     cursor = conn.cursor()
     sql = '''
     SELECT 站點名稱,行政區,更新時間,地址,總車輛數,可借,可還
-    -- SELECT *
     FROM 台北市youbike
     WHERE (更新時間,站點名稱) IN (
 	    SELECT MAX(更新時間),站點名稱
@@ -95,8 +94,6 @@ def search_sitename(word:str) -> list[tuple]:
     conn = sqlite3.connect("台北市youbike.db")
     cursor = conn.cursor()
     sql = '''
-        -- SELECT id,站點名稱,行政區,MAX(更新時間) AS 更新時間,地址,總車輛數,可借,可還
-        -- 改成無id欄位
         SELECT 站點名稱,行政區,MAX(更新時間) AS 更新時間,地址,總車輛數,可借,可還
         FROM 台北市youbike
         GROUP BY 站點名稱

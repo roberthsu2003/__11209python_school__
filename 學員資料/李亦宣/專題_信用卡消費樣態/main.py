@@ -551,10 +551,6 @@ class ShowDetail(Dialog):
 
     def body(self, master):
         self.geometry("200x260")
-        self.GetDataInfo_var = tk.StringVar()
-        mainFrame = tk.Label(
-            master, textvariable=self.GetDataInfo_var, padx=10, pady=10
-        )
 
         try:
             for col, value in zip(self.columns, self.data):

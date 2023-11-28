@@ -30,6 +30,8 @@
 
 ![Alt text](README_img/2.TreeView.png)
 
+![Alt text](README_img/2-1.ALL_info.png)
+
 ![Alt text](README_img/3.player_info.png)
 
         1. 球員照片：可以看出球員加入球隊時是否開心

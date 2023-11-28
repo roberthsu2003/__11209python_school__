@@ -537,8 +537,8 @@ class Window(tk.Tk):
                 self.treeview.heading(col, text=col, anchor="w")
                 self.treeview.column(col, anchor="w", width=100)
 
-            for index, row in data.iterrows():
-                values = [row[col] for col in columns]
+            data_list = data.values.tolist()
+            for values in data_list:
                 self.treeview.insert("", "end", values=values)
 
 

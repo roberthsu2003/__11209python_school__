@@ -524,7 +524,7 @@ class Window(tk.Tk):
         data_dict = self.treeview.item(selected_item)
         data_list = data_dict["values"]
         if data_list:
-            index = self.treeview.index(selected_item)
+            #index = self.treeview.index(selected_item)
             ShowDetail(self, self.treeview["columns"], data_list, title="資訊")
 
     def display_data(self, data):

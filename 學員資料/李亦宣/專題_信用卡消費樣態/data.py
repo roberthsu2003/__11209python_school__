@@ -184,7 +184,7 @@ def csv_to_database() -> None:
         df = pd.read_csv(file)
 
         df.rename(columns={"信用卡交易金額[新台幣]": "信用卡金額"}, inplace=True)
-        df.to_sql(item, conn, if_exists="append", index=False)
+        df.to_sql(item, conn, if_exists="replace", index=False)
 
     conn.close()
 

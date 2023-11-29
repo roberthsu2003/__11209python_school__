@@ -127,30 +127,27 @@
             <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">索引</th>
+                    <th scope="col">站點名稱</th>
+                    <th scope="col">時間</th>
+                    <th scope="col">區域</th>
+                    <th scope="col">地址</th>
+                    <th scope="col">數量</th>
+                    <th scope="col">可借</th>
+                    <th scope="col">可還</th>
                   </tr>
                 </thead>
                 <tbody>
+                  {% for row in data %}
                   <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                    <td> {{ loop.index }} </td>
+                    {% for item in row %}
+                      <td>{{ item }}</td>
+                    {% endfor %}
                   </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
+                  {% endfor %}      
+                  
+                  
                 </tbody>
               </table>
         </div>

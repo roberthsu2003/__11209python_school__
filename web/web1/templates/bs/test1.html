@@ -9,15 +9,15 @@
 {% block head %}
 {{ super() }}
 <style>
-    .one {
+    .banner {
         background-color: beige;
     }
 
-    .two {
-        background-color: rgb(243, 243, 192);
+    .banner .left {
+        background-color: rgb(168, 168, 135);
     }
 
-    .three {
+    .banner .right {
         background-color: rgb(245, 245, 158);
     }
 
@@ -32,6 +32,41 @@
     .six {
         background-color: rgb(199, 108, 108);
     }
+    
+    @media (min-width: 576px) { 
+        /*手機橫的*/
+     }
+
+    
+    @media (min-width: 768px) { 
+        /*平板*/
+     }
+
+    
+    @media (min-width: 992px) { 
+        /*一般*/
+        .banner {
+        background-color: beige;
+        }
+
+        .banner .left {
+            background-color: rgb(40, 146, 127);
+        }
+
+        .banner .right {
+            background-color: rgb(43, 175, 96);
+        }
+     }
+
+
+    @media (min-width: 1200px) { 
+        /*大*/
+    }
+
+
+    @media (min-width: 1400px) { 
+        /*電競*/
+     }
 </style>
 {% endblock %}
 
@@ -39,39 +74,20 @@
 {% block main %}
 <div class="container">
     <div class="row">
-        <div class="col one">
-            Cupidatat excepteur aliqua eiusmod nostrud ex ullamco veniam. Cupidatat culpa magna minim cillum voluptate
-            esse ullamco incididunt irure ad sunt et in ipsum. Do labore consectetur laboris nisi cupidatat ut et tempor
-            excepteur veniam commodo. Dolore dolore reprehenderit eu et enim aute esse commodo dolore. Cupidatat
-            pariatur ullamco enim nostrud velit ut.
-
-            Fugiat elit qui irure minim minim ullamco laboris sint est deserunt qui sit. Pariatur velit pariatur
-            occaecat minim eiusmod dolor cillum adipisicing labore aliquip voluptate dolor. Sit reprehenderit aute sit
-            elit dolor. Lorem aliquip labore nisi aliqua laboris ipsum minim laborum ad ex nostrud duis. Commodo ullamco
-            excepteur ut pariatur nulla voluptate magna cupidatat nisi culpa ea nulla. Eiusmod non commodo incididunt et
-            occaecat sit adipisicing amet magna non nisi.
+        <div class="col banner">
+         <div class="container">
+            <div class="row">
+                <div class="col-md-8 left">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam optio molestiae deserunt eos expedita praesentium soluta quos sunt vitae, alias commodi tempora, incidunt mollitia vel harum blanditiis cum. Est, numquam?
+                </div>
+                <div class="col-md-4 right">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam optio molestiae deserunt eos expedita praesentium soluta quos sunt vitae, alias commodi tempora, incidunt mollitia vel harum blanditiis cum. Est, numquam?
+                </div>
+            </div>
+         </div>   
         </div>
-        <div class="col-6 two">
-            Aute proident amet in adipisicing non enim sint amet reprehenderit veniam tempor. In deserunt fugiat veniam
-            ad in ut nulla. Velit velit laboris ullamco fugiat ipsum velit exercitation occaecat fugiat aute dolor anim
-            veniam fugiat. Ullamco mollit ut anim nostrud laborum. Velit elit duis anim deserunt esse non aliquip.
-            Eiusmod cupidatat non sit do tempor sunt elit ullamco dolor laborum.
-
-            Sunt veniam nisi sit consequat exercitation et elit consequat sint incididunt ea irure mollit. Reprehenderit
-            et veniam consectetur nisi proident laboris. Commodo laboris tempor ex cupidatat sit fugiat minim culpa
-            veniam tempor. Cillum proident labore ipsum do sunt elit eu tempor. Magna ut ad ipsum exercitation voluptate
-            veniam. Officia occaecat consequat et aliqua qui occaecat sunt laboris cillum minim consequat. Aliquip do
-            nisi Lorem excepteur enim reprehenderit.
-        </div>
-        <div class="col three">
-            Aliquip ex cillum in aliqua consequat et. Nostrud magna minim ut officia exercitation qui ea aliquip ipsum.
-            Enim fugiat consequat adipisicing occaecat laboris duis occaecat quis. Anim consectetur voluptate
-            exercitation velit et sunt. Cillum veniam voluptate aute laborum ea eiusmod deserunt deserunt pariatur.
-
-            Aliqua quis est ut esse est aute consectetur. Proident aute ut enim non pariatur dolor enim duis eu. Dolore
-            ex proident occaecat non tempor do reprehenderit veniam veniam non. Aliqua esse magna dolor in incididunt.
-            Quis Lorem nulla pariatur aliquip duis. Anim sunt consectetur cillum ullamco.
-        </div>
+        
+        
     </div>
     <div class="row">
         <div class="col four">

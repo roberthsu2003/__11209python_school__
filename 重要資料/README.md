@@ -132,3 +132,9 @@ https://youtube.com/live/z7OxK07nlFk
 ## 2023_11_22_下午
 https://youtube.com/live/W7-hxMT-ey0
 
+## 2023_11_29＿上午
+https://youtube.com/live/HopnzlX1Pgw
+
+## 2023_11_29_下午
+https://youtube.com/live/LIRCOYR1t3c
+

@@ -1,0 +1,111 @@
+{% extends "bs/base.html" %}
+
+{% block title %}bootstrap test1{% endblock %}
+
+{% block csslink %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/bs/index.css')}}">
+{% endblock %}
+
+{% block head %}
+{{ super() }}
+<style>
+    .one {
+        background-color: beige;
+    }
+
+    .two {
+        background-color: rgb(243, 243, 192);
+    }
+
+    .three {
+        background-color: rgb(245, 245, 158);
+    }
+
+    .four {
+        background-color: rgb(151, 82, 82);
+    }
+
+    .five {
+        background-color: rgb(99, 53, 53);
+    }
+
+    .six {
+        background-color: rgb(199, 108, 108);
+    }
+</style>
+{% endblock %}
+
+
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="col one">
+            Cupidatat excepteur aliqua eiusmod nostrud ex ullamco veniam. Cupidatat culpa magna minim cillum voluptate
+            esse ullamco incididunt irure ad sunt et in ipsum. Do labore consectetur laboris nisi cupidatat ut et tempor
+            excepteur veniam commodo. Dolore dolore reprehenderit eu et enim aute esse commodo dolore. Cupidatat
+            pariatur ullamco enim nostrud velit ut.
+
+            Fugiat elit qui irure minim minim ullamco laboris sint est deserunt qui sit. Pariatur velit pariatur
+            occaecat minim eiusmod dolor cillum adipisicing labore aliquip voluptate dolor. Sit reprehenderit aute sit
+            elit dolor. Lorem aliquip labore nisi aliqua laboris ipsum minim laborum ad ex nostrud duis. Commodo ullamco
+            excepteur ut pariatur nulla voluptate magna cupidatat nisi culpa ea nulla. Eiusmod non commodo incididunt et
+            occaecat sit adipisicing amet magna non nisi.
+        </div>
+        <div class="col-6 two">
+            Aute proident amet in adipisicing non enim sint amet reprehenderit veniam tempor. In deserunt fugiat veniam
+            ad in ut nulla. Velit velit laboris ullamco fugiat ipsum velit exercitation occaecat fugiat aute dolor anim
+            veniam fugiat. Ullamco mollit ut anim nostrud laborum. Velit elit duis anim deserunt esse non aliquip.
+            Eiusmod cupidatat non sit do tempor sunt elit ullamco dolor laborum.
+
+            Sunt veniam nisi sit consequat exercitation et elit consequat sint incididunt ea irure mollit. Reprehenderit
+            et veniam consectetur nisi proident laboris. Commodo laboris tempor ex cupidatat sit fugiat minim culpa
+            veniam tempor. Cillum proident labore ipsum do sunt elit eu tempor. Magna ut ad ipsum exercitation voluptate
+            veniam. Officia occaecat consequat et aliqua qui occaecat sunt laboris cillum minim consequat. Aliquip do
+            nisi Lorem excepteur enim reprehenderit.
+        </div>
+        <div class="col three">
+            Aliquip ex cillum in aliqua consequat et. Nostrud magna minim ut officia exercitation qui ea aliquip ipsum.
+            Enim fugiat consequat adipisicing occaecat laboris duis occaecat quis. Anim consectetur voluptate
+            exercitation velit et sunt. Cillum veniam voluptate aute laborum ea eiusmod deserunt deserunt pariatur.
+
+            Aliqua quis est ut esse est aute consectetur. Proident aute ut enim non pariatur dolor enim duis eu. Dolore
+            ex proident occaecat non tempor do reprehenderit veniam veniam non. Aliqua esse magna dolor in incididunt.
+            Quis Lorem nulla pariatur aliquip duis. Anim sunt consectetur cillum ullamco.
+        </div>
+    </div>
+    <div class="row">
+        <div class="col four">
+            Laborum magna non sunt consequat. Ex fugiat laborum deserunt exercitation do ullamco tempor aliqua.
+            Incididunt quis excepteur Lorem et duis elit aute.
+
+            Sunt do aute voluptate sit esse tempor nisi. Cupidatat irure tempor nostrud qui reprehenderit amet
+            incididunt ex occaecat esse laboris. In dolore veniam non tempor nisi in. Elit exercitation eu aute ex sunt
+            occaecat in cupidatat anim. Mollit commodo do elit occaecat.
+        </div>
+        <div class="col-5 five">
+            Veniam exercitation elit sunt irure nulla ad dolor tempor nisi ut in magna aute. In qui proident ex duis
+            ullamco aliqua minim ut qui culpa consequat ullamco. Fugiat sint esse deserunt aliquip cillum ad veniam
+            eiusmod commodo minim. Aute fugiat velit id adipisicing dolor duis quis qui dolor proident ex enim excepteur
+            eu.
+
+            Nisi culpa quis consectetur nostrud ipsum commodo veniam anim. Eiusmod elit commodo aliquip excepteur sunt
+            velit exercitation est ad. Non nulla et Lorem sint magna. Qui amet fugiat cupidatat ad. Ea nostrud sunt qui
+            officia nisi laboris nulla fugiat fugiat. Labore eu mollit eiusmod cillum voluptate. Tempor ut tempor veniam
+            labore et.
+        </div>
+        <div class="col six">
+            Ea do nostrud ut duis amet mollit est eu ad occaecat occaecat ea consequat magna. Veniam irure sunt do
+            veniam duis consequat nostrud. Id ex fugiat ex duis commodo aute esse cupidatat minim ipsum ea commodo
+            veniam. Irure ex occaecat consectetur laborum nisi est voluptate eu proident ipsum dolor pariatur ullamco
+            exercitation.
+
+            Sit sunt aliquip adipisicing deserunt ea qui est mollit proident adipisicing. Sint nulla do in laboris id
+            voluptate nisi reprehenderit est. Tempor quis Lorem ullamco consequat reprehenderit. Anim voluptate ex sunt
+            aliquip esse.
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+%}

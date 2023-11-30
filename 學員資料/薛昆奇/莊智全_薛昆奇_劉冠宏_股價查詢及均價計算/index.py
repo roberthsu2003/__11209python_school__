@@ -75,6 +75,7 @@ def update_data():
             insert_data(conn, [item['Date'], item['Open'], item['High'],
                         item['Low'], item['Close'], item['Adj Close'], item['Volume']])
     conn.commit()
+    conn.execute(f"DROP TABLE stock{stock_number}")
     conn.close()
 
 

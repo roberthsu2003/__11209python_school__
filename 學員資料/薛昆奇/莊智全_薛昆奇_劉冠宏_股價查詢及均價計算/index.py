@@ -83,7 +83,8 @@ def treeview_stock():
     stock_number=x.get()
     with open(f'{stock_number}.csv', 'r',  encoding='utf-8') as file:
         reader = csv.reader(file)
-        for row in reader:
+        reader = list(reader)
+        for row in reversed(reader):
             tree.insert('','end',values=row)
     count_60()
     count_20()

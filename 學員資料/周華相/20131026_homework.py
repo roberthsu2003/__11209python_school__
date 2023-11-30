@@ -9,7 +9,7 @@ def download_data() -> dict:
     下載資料
     '''
 
-    pm25_url = "https://data.moenv.gov.tw/api/v2/aqx_p_02?language=zh&api_key=be13a85f-d6c7-45b1-b56d-1e6d8666a370"
+    pm25_url = "https://data.moenv.gov.tw/api/v2/aqx_p_02?language=zh&api_key=apikey"
     response = requests.get(pm25_url)
     response.raise_for_status()
     print('下載成功')

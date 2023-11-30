@@ -8,6 +8,7 @@ from youbikeTreeView import YoubikeTreeView
 from threading import Timer
 
 
+
 class Window(tk.Tk):
     def __init__(self,**kwargs):
         super().__init__(**kwargs)
@@ -56,7 +57,7 @@ class Window(tk.Tk):
 def main():
     def update_data(w:Window)->None:
         #-----------更新treeView資料---------------
-              
+        global t      
         try:
             datasource.updata_render_data()
             #pass
@@ -65,27 +66,37 @@ def main():
             #window.destroy()
 
         lastest_data = datasource.lastest_datetime_data()
-        w.youbikeTreeView.update_content(lastest_data)
-        
-        
+        try:
+            w.youbikeTreeView.update_content(lastest_data)
+        except RuntimeError: #次執行中止會產生RuntimeError的錯誤
+            return
 
         #w.after(5*60*1000,update_data,w) #每隔5分鐘
         t = Timer(5*60, update_data,args=(window,))
+        
         t.start()
 
+    global t,window
     window = Window()
     window.title('台北市youbike2.0')
     #window.geometry('600x300')
     window.resizable(width=False,height=False)
+    window.protocol("WM_DELETE_WINDOW", on_closing)
     lastest_data = datasource.lastest_datetime_data()
     window.youbikeTreeView.update_content(lastest_data)
     #window.after(1000,update_data,window) 
     t = Timer(1, update_data,args=(window,))
+    print(id(t))
     t.start()         
     window.mainloop()
-    
 
-    
+def on_closing():
+    datasource.threadRun = False #結束次執行緒執行
+    window.destroy()    
+    t.cancel()
 
 if __name__ == "__main__":
-    main()
+    t = None
+    window = None
+    main()    
+    

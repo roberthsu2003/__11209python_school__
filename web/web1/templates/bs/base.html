@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}">
+    <!--自訂css-->    
+    {% block csslink %}{% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+    {% endblock %}
+    <style>
+        body{
+            background-color: aliceblue;
+        }
+        .navbar-nav .nav-link.active, .navbar-nav .nav-link.show 
+        {
+            color:cadetblue
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="container-md">
+        <nav class="navbar navbar-expand-lg bg-secondary-subtle navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand text-dark" href="{{url_for('bs.index')}}">職能發展學院</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        {% for link,link_str in [("/bs/",'Home'),("/bs/product",'產品'),("/bs/profile",'個人簡介')]%}
+                        <li class="nav-item">
+                            {% if request.path == link %}                          
+                            <a class="nav-link active" aria-current="page" href="{{link}}">{{link_str}}</a>
+                            {% else %}
+                            <a class="nav-link text-dark" aria-current="page" href="{{link}}">{{link_str}}</a>
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        {% block main%}
+        {% endblock %}
+    </div>
+    <script src="{{url_for('static',filename='js/bootstrap.bundle.min.js')}}"></script>
+</body>
+
+</html>

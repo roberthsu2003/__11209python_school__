@@ -1,0 +1,28 @@
+#main{
+    background-color: aliceblue;
+}
+@media (min-width: 576px) {
+    #main{
+        background-color:antiquewhite;
+    }
+ }
+@media (min-width: 768px) { 
+    #main{
+        background-color:aqua;
+    }
+ }
+@media (min-width: 992px) {
+    #main{
+        background-color:azure;
+    }
+ }
+@media (min-width: 1200px) {
+    #main{
+        background-color:brown;
+    }
+ }
+@media (min-width: 1400px) { 
+    #main{
+        background-color:blueviolet;
+    }
+ }

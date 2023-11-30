@@ -8,6 +8,7 @@ import yfinance as yf
 import sqlite3
 import pandas as pd
 import matplotlib.pyplot as plt
+import sys
 
 
 #-----下載個股價格-----#
@@ -33,6 +34,9 @@ def create_sql(conn):
     stock_number = x.get()
     conn = sqlite3.connect('stock.db')
     cursor = conn.cursor()
+    cursor.execute(f"SELECT name FROM sqlite_master WHERE name='stock{stock_number}'")
+    if cursor.fetchone():
+        cursor.execute(f"DROP TABLE stock{stock_number}")
     cursor.execute(f"""
     CREATE TABLE stock{stock_number} (
         "id"	INTEGER,
@@ -75,7 +79,6 @@ def update_data():
             insert_data(conn, [item['Date'], item['Open'], item['High'],
                         item['Low'], item['Close'], item['Adj Close'], item['Volume']])
     conn.commit()
-    conn.execute(f"DROP TABLE stock{stock_number}")
     conn.close()
 
 
@@ -216,6 +219,10 @@ tree.pack()
 
 #-----設定線圖框-----#
 line=tk.Button(fifthFrame,text='顯示移動平均線圖',command=pop_up).pack()
+
+
+#-----當按下右上角關閉視窗時，停止執行py檔案-----#
+Window.protocol("WM_DELETE_WINDOW", Window.quit)
 
 
 #-----保持視窗在執行狀態-----#

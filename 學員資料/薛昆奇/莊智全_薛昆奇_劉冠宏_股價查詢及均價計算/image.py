@@ -2,11 +2,11 @@ import tkinter as tk
 from PIL import Image,ImageTk
 
 root = tk.Tk()
-root.title('oxxo.studio')
-root.geometry('1024x768')
+root.title('均價線圖')
+root.geometry('640x480')
 #-----打開圖檔並且重新設定圖片大小
 mov_img=Image.open('mov.jpeg')
-mov_img=mov_img.resize((500,250))
+#mov_img=mov_img.resize((500,250))
 
 #-----把圖片轉換為tkinter可辨識
 tk_img=ImageTk.PhotoImage(mov_img)

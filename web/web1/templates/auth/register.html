@@ -1,0 +1,47 @@
+{% extends "/bs/base.html" %}
+
+{% block title %}bootstrap{% endblock %}
+
+{% block csslink %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/bs/index.css')}}">
+{% endblock %}
+
+{% block head %}
+{{ super() }}
+<style>
+   
+</style>
+{% endblock %}
+
+
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+           <form method="POST">
+            {{ form.csrf_token }}
+            <div class="mb-3">
+                {{ form.name.label(class="form-label") }} {{form.name(size=20,class="form-control")}}
+            </div>
+
+            <div class="mb-3">
+                {{ form.email.label(class="form-label") }} {{ form.email(class="form-control") }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.password.label(class="form-label") }} {{ form.password(class="form-control") }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.confirm.label(class="form-label") }} {{ form.confirm(class="form-control") }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.submit(class="form-control") }}
+            </div> 
+           </form>
+        </div>        
+    </div>
+</div>
+{% endblock %}
+

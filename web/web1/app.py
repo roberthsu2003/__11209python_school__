@@ -1,5 +1,6 @@
 from flask import Flask,url_for,render_template
 import pandas as pd
+import secrets
 from auth import auth
 from bs import bootstrap
 
@@ -7,6 +8,7 @@ from bs import bootstrap
 app = Flask(__name__)
 app.register_blueprint(auth.bp)
 app.register_blueprint(bootstrap.bp)
+app.config['SECRET_KEY'] = secrets.token_urlsafe(16)
 
 @app.route('/')
 def index():

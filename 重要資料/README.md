@@ -138,3 +138,10 @@ https://youtube.com/live/HopnzlX1Pgw
 ## 2023_11_29_下午
 https://youtube.com/live/LIRCOYR1t3c
 
+## 2023_12_04_早上
+https://youtube.com/live/vkFkSfAtCI0
+
+## 2023_12_04_下午
+https://youtube.com/live/CYHOM-blPsg
+
+

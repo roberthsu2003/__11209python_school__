@@ -4,6 +4,8 @@ import pandas as pd
 
 df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminder_unfiltered.csv')
 
+#這是註解
+#
 dash1 = Dash(requests_pathname_prefix="/app1/")
 
 dash1.layout = html.Div([

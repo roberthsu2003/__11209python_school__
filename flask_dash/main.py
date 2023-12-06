@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 application = DispatcherMiddleware(
     app,
-    {"/app1": dash1.server}
+    {"/dash/app1": dash1.server}
 )
 
 @app.route("/")

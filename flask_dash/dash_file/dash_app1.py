@@ -6,7 +6,7 @@ df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapmi
 
 #這是註解
 #
-dash1 = Dash(requests_pathname_prefix="/app1/")
+dash1 = Dash(requests_pathname_prefix="/dash/app1/")
 
 dash1.layout = html.Div([
     html.H1(children='Title of Dash App', style={'textAlign':'center'}),

@@ -144,4 +144,11 @@ https://youtube.com/live/vkFkSfAtCI0
 ## 2023_12_04_下午
 https://youtube.com/live/CYHOM-blPsg
 
+## 2023_12_06_早上
+https://youtube.com/live/EQPFUM9ONCQ
+
+## 2023_12_06_下午
+https://youtube.com/live/eDs71AosNW0
+
+
 

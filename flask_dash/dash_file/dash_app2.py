@@ -8,6 +8,8 @@ dash2 = Dash(requests_pathname_prefix="/dash/app2/",external_stylesheets=[dbc.th
 dash2.title = "台北市youbike及時資料"
 lastest_data = datasource.lastest_datetime_data()
 lastest_df = pd.DataFrame(lastest_data,columns=['站點名稱','更新時間','行政區','地址','總數','可借','可還'])
+lastest_df1 = lastest_df.reset_index()
+lastest_df1['站點名稱'] = lastest_df1['站點名稱'].map(lambda name:name[11:])
 
 dash2.layout = html.Div(
     [
@@ -22,9 +24,11 @@ dash2.layout = html.Div(
             html.Div([
                 html.Div([
                     dash_table.DataTable(
-                        data=lastest_df.to_dict('records'),
-                        columns=[{'id':column,'name':column} for column in lastest_df.columns],
-                        page_size=20
+                        data=lastest_df1.to_dict('records'),
+                        columns=[{'id':column,'name':column} for column in lastest_df1.columns],
+                        page_size=20,
+                        style_table={'height': '300px', 'overflowY': 'auto'},
+                        fixed_rows={'headers': True}
                     ),
                 ],className="col text-center")
             ],

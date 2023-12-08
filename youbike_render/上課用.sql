@@ -55,4 +55,5 @@ SELECT 站點名稱,MAX(更新時間)
 
 
 
-	
+SELECT COUNT(id) as 筆數
+FROM 台北市youbike

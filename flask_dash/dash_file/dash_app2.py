@@ -25,13 +25,17 @@ dash2.layout = html.Div(
                 html.Div([
                     html.Div([
                                 dbc.Label("站點名稱"),
-                                dbc.Input(placeholder="請輸入站點名稱", type="text"),                                
+                                dbc.Input(id='input_value',
+                                          placeholder="請輸入站點名稱", type="text"),                                
                     ])
         
                 ],className="col"),
                 html.Div([
                     html.Button('確定', id='submit-val',className="btn btn-primary")
-                    ],className="col")
+                    ],className="col"),
+                html.Div(children="輸入內容",
+                         id="output-content",
+                         className="col"),
             ],
             className="row row-cols-auto align-items-end",
             style={"paddingTop":'2rem'}),
@@ -74,6 +78,16 @@ dash2.layout = html.Div(
     ],
     className="container-lg"
     )
+
+@callback(
+        Output('output-content','children'),
+        Input('submit-val','n_clicks'),
+        Input('input_value','value')
+)
+def clickBtn(n_clicks:None | int,inputValue:str):
+    if n_clicks is not None:
+        #一定先檢查有沒有按button
+        print(inputValue)
 
 @callback(
       Output('showMessage','children'),

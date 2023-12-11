@@ -1,4 +1,4 @@
-from dash import Dash, html,dash_table,Input,Output,callback
+from dash import Dash, html,dash_table,Input,Output,callback,dcc
 import pandas as pd
 import dash_bootstrap_components as dbc
 from . import datasource
@@ -20,6 +20,20 @@ dash2.layout = html.Div(
                 ],className="col text-center")
             ],
             className="row",
+            style={"paddingTop":'2rem'}),
+            html.Div([
+                html.Div([
+                    dcc.Input(id="search_site",
+                              type="search",
+                              placeholder="請輸入站點名稱"
+                    )
+        
+                ],className="col"),
+                html.Div([
+                    html.Button('確定', id='submit-val', n_clicks=0,className="btn btn-primary")
+                    ],className="col")
+            ],
+            className="row row-cols-auto",
             style={"paddingTop":'2rem'}),
             html.Div([
                 html.Div([
@@ -49,7 +63,7 @@ dash2.layout = html.Div(
                 ],className="col text-center")
             ],
             className="row",
-            style={"paddingTop":'2rem'}),
+            style={"paddingTop":'0.5rem'}),
             html.Div([
                 html.Div(children="",className="col",id='showMessage')
             ],

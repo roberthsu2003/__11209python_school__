@@ -24,6 +24,7 @@ dash2.layout = html.Div(
             html.Div([
                 html.Div([
                     dash_table.DataTable(
+                        id='main_table',
                         data=lastest_df1.to_dict('records'),
                         columns=[{'id':column,'name':column} for column in lastest_df1.columns],
                         page_size=20,
@@ -41,7 +42,9 @@ dash2.layout = html.Div(
                                  'width': '5%'},
                                 {   'if': {'column_id': '可還'},
                                  'width': '5%'},
-                        ]
+                        ],
+                        row_selectable="single",
+                        selected_rows=[]
                     ),
                 ],className="col text-center")
             ],

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <title>我的首頁</title>
+</head>
+<body>
+    <h1>Hello! Flask</h1>
+    <h2>name:{{name}}</h2>
+    {{dataFrame.to_html() | safe}}
+</body>
+</html>

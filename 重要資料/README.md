@@ -102,4 +102,53 @@ https://youtube.com/live/2MpWKit3ynA
 ## 2023_11_02_下午
 https://youtube.com/live/daEfGFzEJ78
 
+## 2023_11_08_早上
+https://youtube.com/live/QK78Q5iEhbg
+
+## 2023_11_08_下午
+https://youtube.com/live/UjwZ3OwG1y0
+
+## 2023_11_10_早上
+https://youtube.com/live/lRY9hvVHfFE
+
+## 2023_11_10_下午
+https://youtube.com/live/o6HQepxxDlo
+
+## 2023_11_16_早上
+https://youtube.com/live/Mg3WFru-AXY
+
+## 2023_11_16_早上
+https://youtube.com/live/Qxg3vr2BBpU
+
+## 2023_11_20_早上
+https://youtube.com/live/bYHCMkG25tY
+
+## 2023_11_20_下午
+https://youtube.com/live/CFoPy2Q7IwQ
+
+## 2023_11_22_早上
+https://youtube.com/live/z7OxK07nlFk
+
+## 2023_11_22_下午
+https://youtube.com/live/W7-hxMT-ey0
+
+## 2023_11_29＿上午
+https://youtube.com/live/HopnzlX1Pgw
+
+## 2023_11_29_下午
+https://youtube.com/live/LIRCOYR1t3c
+
+## 2023_12_04_早上
+https://youtube.com/live/vkFkSfAtCI0
+
+## 2023_12_04_下午
+https://youtube.com/live/CYHOM-blPsg
+
+## 2023_12_06_早上
+https://youtube.com/live/EQPFUM9ONCQ
+
+## 2023_12_06_下午
+https://youtube.com/live/eDs71AosNW0
+
+
 

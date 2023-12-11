@@ -33,3 +33,9 @@
 
 ## 2023_10_30
 [SQLite資料匯入] (https://github.com/Rachelyah/11209Python_school/tree/main/1026/homework_%E7%A9%BA%E6%B0%A3%E5%93%81%E8%B3%AA%E8%B3%87%E6%96%99)
+
+## 2023_11_02
+[tkinter地圖功能](https://github.com/Rachelyah/11209Python_school/blob/main/1101/homework_地圖/map.ipynb)
+
+## 2023_11_10
+[將pm2.5資料匯入Postgre資料庫](https://github.com/Rachelyah/11209Python_school/tree/main/1110/homework-%E5%BB%BA%E7%BD%AE%E7%92%B0%E5%A2%83%E9%83%A8pm2.5%E8%B3%87%E6%96%99%E5%BA%AB)

@@ -51,7 +51,7 @@ dash2.layout = html.Div(
             className="row",
             style={"paddingTop":'2rem'}),
             html.Div([
-                html.H5("這是第3列",className="col",id='showMessage')
+                html.Div(className="col",id='showMessage')
             ],
             className="row",
             style={"paddingTop":'2rem'})
@@ -65,6 +65,12 @@ dash2.layout = html.Div(
       Output('showMessage','children'),
       Input('main_table','selected_rows')  
 )
-def selectedRow(selected_rows):
-    print(selected_rows)
-    return str(selected_rows)
+def selectedRow(selected_rows:list[int]):
+    #取得一個站點,series
+    if len(selected_rows) != 0:
+        print("執行")
+        oneSite:pd.DataFrame = lastest_df1.iloc[[selected_rows]]
+        oneTable:dash_table.DataTable =  dash_table.DataTable(oneSite.to_dict('records'), [{"name": i, "id": i} for i in oneSite.columns])
+        return [oneTable]
+    
+    return None

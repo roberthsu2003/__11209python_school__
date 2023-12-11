@@ -1,6 +1,7 @@
 import requests
 import psycopg2
 from . import password as pw
+#import password as pw
 
 
 def lastest_datetime_data()->list[tuple]:

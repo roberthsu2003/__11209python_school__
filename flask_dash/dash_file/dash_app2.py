@@ -51,7 +51,7 @@ dash2.layout = html.Div(
             className="row",
             style={"paddingTop":'2rem'}),
             html.Div([
-                html.Div(className="col",id='showMessage')
+                html.Div(children="",className="col",id='showMessage')
             ],
             className="row",
             style={"paddingTop":'2rem'})
@@ -68,9 +68,8 @@ dash2.layout = html.Div(
 def selectedRow(selected_rows:list[int]):
     #取得一個站點,series
     if len(selected_rows) != 0:
-        print("執行")
-        oneSite:pd.DataFrame = lastest_df1.iloc[[selected_rows]]
+        oneSite:pd.DataFrame = lastest_df1.iloc[[selected_rows[0]]]        
         oneTable:dash_table.DataTable =  dash_table.DataTable(oneSite.to_dict('records'), [{"name": i, "id": i} for i in oneSite.columns])
-        return [oneTable]
+        return oneTable
     
     return None

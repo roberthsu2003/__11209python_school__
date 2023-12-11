@@ -23,17 +23,17 @@ dash2.layout = html.Div(
             style={"paddingTop":'2rem'}),
             html.Div([
                 html.Div([
-                    dcc.Input(id="search_site",
-                              type="search",
-                              placeholder="請輸入站點名稱"
-                    )
+                    html.Div([
+                                dbc.Label("站點名稱"),
+                                dbc.Input(placeholder="請輸入站點名稱", type="text"),                                
+                    ])
         
                 ],className="col"),
                 html.Div([
-                    html.Button('確定', id='submit-val', n_clicks=0,className="btn btn-primary")
+                    html.Button('確定', id='submit-val',className="btn btn-primary")
                     ],className="col")
             ],
-            className="row row-cols-auto",
+            className="row row-cols-auto align-items-end",
             style={"paddingTop":'2rem'}),
             html.Div([
                 html.Div([

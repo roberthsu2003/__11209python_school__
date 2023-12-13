@@ -31,10 +31,7 @@ dash2.layout = html.Div(    [
                 ],className="col"),
                 html.Div([
                     html.Button('確定', id='submit-val',className="btn btn-primary")
-                    ],className="col"),
-                html.Div(children="輸入內容",
-                         id="output-content",
-                         className="col"),
+                    ],className="col"),                
             ],
             className="row row-cols-auto align-items-end",
             style={"paddingTop":'2rem'}),

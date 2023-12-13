@@ -43,8 +43,6 @@ dash2.layout = html.Div(
                 html.Div([
                     dash_table.DataTable(
                         id='main_table',
-                        data=lastest_df1.to_dict('records'),
-                        columns=[{'id':column,'name':column} for column in lastest_df1.columns],
                         page_size=20,
                         style_table={'height': '300px', 'overflowY': 'auto'},
                         fixed_rows={'headers': True},
@@ -80,7 +78,7 @@ dash2.layout = html.Div(
     )
 
 @callback(
-        Output('output-content','children'),
+        [Output('main_table','data'),Output('main_table','columns')],
         [Input('submit-val','n_clicks')],
         [State('input_value','value')]
 )
@@ -88,7 +86,13 @@ def clickBtn(n_clicks:None | int,inputValue:str):
     if n_clicks is not None:
         #一定先檢查有沒有按button
         searchData:list[tuple] = datasource.search_sitename(inputValue)
-        print(searchData)
+        search_df = pd.DataFrame(searchData,columns=['站點名稱','更新時間','行政區','地址','總數','可借','可還'])
+        search_df1 = search_df.reset_index()
+        search_df1['站點名稱'] = search_df1['站點名稱'].map(lambda name:name[11:])
+        return search_df1.to_dict('records'),[{'id':column,'name':column} for column in search_df1.columns]
+    #n_clicks is None
+    #代表第一次啟動
+    return lastest_df1.to_dict('records'),[{'id':column,'name':column} for column in lastest_df1.columns]
 
 @callback(
       Output('showMessage','children'),

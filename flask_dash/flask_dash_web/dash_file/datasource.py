@@ -1,14 +1,31 @@
 import requests
 import psycopg2
-#from . import password as pw
+#import password as pw
+import socket
 import os
 
+myip = socket.gethostbyname(socket.gethostname())
+if '172.17.0.0'<= myip <= '172.17.255.255':
+    from . import password as pw
+    print("本機")
+    DATABASE = pw.DATABASE
+    USER = pw.USER
+    PASSWORD = pw.PASSWORD
+    HOST = pw.HOST
+else:
+    DATABASE = os.environ['DATABASE']
+    USER = os.environ['USER']
+    PASSWORD = os.environ['PASSWORD']
+    HOST = os.environ['HOST']
+     
+
+print(f'我的ip是{myip}')
 
 def lastest_datetime_data()->list[tuple]:
-    conn = psycopg2.connect(database=os.environ['DATABASE'],
-                            user=os.environ['USER'], 
-                            password=os.environ['PASSWORD'],
-                            host=os.environ['HOST'], 
+    conn = psycopg2.connect(database=DATABASE,
+                            user=USER, 
+                            password=PASSWORD,
+                            host=HOST, 
                             port="5432")
     cursor = conn.cursor()
     sql = '''
@@ -28,10 +45,10 @@ def lastest_datetime_data()->list[tuple]:
     return rows
 
 def search_sitename(word:str) -> list[tuple]:
-    conn = psycopg2.connect(database=os.environ['DATABASE'],
-                            user=os.environ['USER'], 
-                            password=os.environ['PASSWORD'],
-                            host=os.environ['HOST'], 
+    conn = psycopg2.connect(database=DATABASE,
+                            user=USER, 
+                            password=PASSWORD,
+                            host=HOST, 
                             port="5432")
     cursor = conn.cursor()
     sql = '''

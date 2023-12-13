@@ -1,14 +1,14 @@
 import requests
 import psycopg2
 from . import password as pw
-#import password as pw
+import os
 
 
 def lastest_datetime_data()->list[tuple]:
-    conn = psycopg2.connect(database=pw.DATABASE,
-                            user=pw.USER, 
-                            password=pw.PASSWORD,
-                            host=pw.HOST, 
+    conn = psycopg2.connect(database=os.environ['DATABASE'],
+                            user=os.environ['USER'], 
+                            password=os.environ['PASSWORD'],
+                            host=os.environ['HOST'], 
                             port="5432")
     cursor = conn.cursor()
     sql = '''

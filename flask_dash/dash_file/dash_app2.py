@@ -1,4 +1,4 @@
-from dash import Dash, html,dash_table,Input,Output,callback,dcc
+from dash import Dash, html,dash_table,Input,Output,callback,dcc,State
 import pandas as pd
 import dash_bootstrap_components as dbc
 from . import datasource
@@ -81,8 +81,8 @@ dash2.layout = html.Div(
 
 @callback(
         Output('output-content','children'),
-        Input('submit-val','n_clicks'),
-        Input('input_value','value')
+        [Input('submit-val','n_clicks')],
+        [State('input_value','value')]
 )
 def clickBtn(n_clicks:None | int,inputValue:str):
     if n_clicks is not None:

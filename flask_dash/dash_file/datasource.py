@@ -35,7 +35,7 @@ def search_sitename(word:str) -> list[tuple]:
                             port="5432")
     cursor = conn.cursor()
     sql = '''
-        SELECT *
+        SELECT 站點名稱,更新時間,行政區,地址,總車輛數,可借,可還
         FROM 台北市youbike
         WHERE (更新時間,站點名稱) IN (
 	          SELECT MAX(更新時間),站點名稱

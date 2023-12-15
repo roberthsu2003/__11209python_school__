@@ -11,7 +11,8 @@ class Window(tk.Tk):
             datasource.update_sqlite_data()
         except Exception as e:                     
             messagebox.showerror("錯誤",f'{e}\n將關閉應用程式\n請稍後再試')
-            self.destroy()                 
+            self.destroy() 
+    print("判斷1 ok")
     
 
 t = None

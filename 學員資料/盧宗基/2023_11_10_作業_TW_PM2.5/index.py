@@ -46,6 +46,7 @@ def insert_data(conn, values: list) -> None:
     conn.commit()
     cursor.close()
 
+
 n=0
 
 def update_render_data() -> None:

@@ -4,9 +4,11 @@ from werkzeug.serving import run_simple
 from dash_file.dash_app1 import dash1
 from dash_file.dash_app2 import dash2
 from auth.register import register_blue
+import secrets
 
 app = Flask(__name__)
 app.register_blueprint(register_blue)
+app.config['SECRET_KEY'] = secrets.token_hex(16)
 
 application = DispatcherMiddleware(
     app,

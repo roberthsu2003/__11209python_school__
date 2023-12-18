@@ -59,20 +59,56 @@
                     </td>                   
                   </tr>
                   <tr>
-                    <th scope="row" class="col-2 text-end">Email</th>
-                    <td>Larry the Bird</td>                   
+                    <th scope="row" class="col-2 text-end">{{form.uEmail.label(class="form-label")}}</th>
+                    <td>
+                      {{form.uEmail(class="form-control")}}
+                      {% if(form.uEmail.errors) %}
+                        <ul class="errors">
+                            {% for error in form.uEmail.errors %}
+                            <li>
+                                <div class="alert alert-warning" role="alert">
+                                    {{ error }}
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    </td>
+                                       
                   </tr>
                   <tr>
-                    <th scope="row" class="col-2 text-end">出生年月日</th>
-                    <td>Larry the Bird</td>                   
+                    <th scope="row" class="col-2 text-end">{{form.isGetEmail.label(class="form-label")}}</th>
+                    <td>{{form.isGetEmail(class="form-check-input")}}</td>                   
                   </tr>
                   <tr>
-                    <th scope="row" class="col-2 text-end">自我簡介</th>
-                    <td>Larry the Bird</td>                   
+                    <th scope="row" class="col-2 text-end">{{form.uBirthday.label(class="form-label")}}</th>
+                    <td>{{form.uBirthday()}}</td>                   
                   </tr>
                   <tr>
-                    <th scope="row" class="col-2 text-end">密碼:</th>
-                    <td>Larry the Bird</td>                   
+                    <th scope="row" class="col-2 text-end">{{form.uAboutMe.label(class="form-label")}}</th>
+                    <td>{{form.uAboutMe(class="form-control",placeholder="最多200字")}}</td>                
+                  </tr>
+                  <tr>
+                    <th scope="row" class="col-2 text-end">{{form.uPass.label(class="form-label")}}</th>
+                    <td>{{form.uPass(class="form-control")}}
+                      <p class="lead h6 mt-3" style="font-size: 0.8em;"><u>最少4個字元,最多20個字元</u></p>
+                        {% if(form.uPass.errors) %}
+                        <ul class="errors">
+                            {% for error in form.uPass.errors %}
+                            <li>
+                                <div class="alert alert-warning" role="alert">
+                                    {{ error }}
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </td> 
+                                     
+                  </tr>
+                  <tr>
+                    <th scope="row" class="col-2 text-end">{{form.uConfirmPass.label(class="form-label")}}</th>
+                    <td>{{form.uConfirmPass(class="form-control")}}</td>                   
                   </tr>
                   <tr>
                     <th scope="row" class="col-2 text-end"></th>

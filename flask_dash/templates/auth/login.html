@@ -35,9 +35,9 @@
             </div>
             <div class="mb-3">
                 {{ form.password.label(class="form-label") }} {{ form.password(class="form-control")}}
-            </div>
-            
-            <input type="submit" value="確定">
+            </div>            
+            <input type="submit" value="確定" class="btn btn-primary">
+            <a href="/auth/register" class="ps-3">註冊帳號</a>
         </form>
         {% if form.email.errors %}
             <ul>

@@ -1,7 +1,7 @@
 from flask import Blueprint,render_template,request,redirect
 from flask_wtf import FlaskForm
 from wtforms import StringField
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired,Length
 
 blueprint_auth = Blueprint('auth', __name__,url_prefix='/auth')
 
@@ -26,7 +26,15 @@ def login():
 def success():
     return render_template('/auth/success.html')
 
-
-@blueprint_auth.route('/registor')
+class UserRegistrationForm(FlaskForm):
+    uName = StringField("姓名",validators=[DataRequired(message="此欄必需有資料"),Length(min=2,max=20)])
+@blueprint_auth.route('/registor',methods=['GET','POST'])
 def register():
-    return render_template('/auth/registor.html')
+    form = UserRegistrationForm()
+    if request.method == "POST":
+        if form.validate_on_submit():
+            uName = form.uName.data
+            form.uName.data = ''
+            print(uName)
+
+    return render_template('/auth/registor.html',form=form)

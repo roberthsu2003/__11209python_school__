@@ -29,7 +29,32 @@
 
 {% block content %}
     <div class="container-lg">
-        <h1>註冊帳號</h1>        
+        <h1>註冊帳號</h1>
+        <form method="POST">
+            {{ form.csrf_token }}
+            <table class="table">
+                
+                <tbody>
+                  <tr >
+                    <th scope="row" class="col-2 text-end">{{ form.uName.label(class='form-label') }}</th>
+                    <td>
+                        {{ form.uName(size=20,class='form-control') }}
+                    </td>
+                    
+                  </tr>
+                  
+                  <tr>
+                    <th scope="row"></th>
+                    <td>
+                      <input type="reset" id="resetBtn" value="重設" class="btn btn-secondary"/>
+                      <input type="submit" value="確定" class="btn btn-primary"/>
+                      
+                    </td>
+                    
+                  </tr>
+                </tbody>
+              </table>
+                
         {{ super() }}
     </div>
        

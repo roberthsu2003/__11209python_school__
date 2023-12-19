@@ -36,21 +36,21 @@
                 
                 <tbody>
                   <tr >
-                    <th scope="row" class="col-2 text-end">{{ form.uName.label(class='form-label') }}</th>
+                    <th scope="row" class="col-4 text-end">{{ form.uName.label(class='form-label') }}</th>
                     <td>
                         {{ form.uName(size=20,class='form-control') }}
                     </td>                    
                   </tr>
 
                   <tr >
-                    <th scope="row" class="col-2 text-end">{{ form.uGender.label(class='form-label') }}</th>
+                    <th scope="row" class=" text-end">{{ form.uGender.label(class='form-label') }}</th>
                     <td>
                         {{ form.uGender(class='form-select') }}
                     </td>                    
                   </tr>
 
                   <tr >
-                    <th scope="row" class="col-2 text-end">{{ form.uPhone.label(class='form-label') }}</th>
+                    <th scope="row" class=" text-end">{{ form.uPhone.label(class='form-label') }}</th>
                     <td>
                         {{ form.uPhone(class='form-control') }}
                         <p class="lead mt-3" style="font-size:0.8rem"><u>格式:0935-314-926</u></p>
@@ -70,10 +70,18 @@
                   </tr>
 
                   <tr >
-                    <th scope="row" class="col-2 text-end">{{ form.uEmail.label(class='form-label') }}</th>
+                    <th scope="row" class=" text-end">{{ form.uEmail.label(class='form-label') }}</th>
                     <td>
                         {{ form.uEmail(class='form-control') }}
-                    </td>  
+                    </td>
+                  </tr> 
+                  
+                  <tr >
+                    <th scope="row" class=" text-end">{{ form.isGetEmail.label(class='form-label') }}</th>
+                    <td>
+                        {{ form.isGetEmail(class='form-check-input') }}
+                    </td>
+                  </tr>
                   
                   <tr>
                     <th scope="row"></th>

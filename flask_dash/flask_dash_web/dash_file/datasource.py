@@ -1,15 +1,5 @@
 import requests
 import psycopg2
-<<<<<<< HEAD
-from . import password as pw
-
-
-def lastest_datetime_data()->list[tuple]:
-    conn = psycopg2.connect(database=pw.DATABASE,
-                            user=pw.USER, 
-                            password=pw.PASSWORD,
-                            host=pw.HOST, 
-=======
 #import password as pw
 import socket
 import os
@@ -36,7 +26,6 @@ def lastest_datetime_data()->list[tuple]:
                             user=USER, 
                             password=PASSWORD,
                             host=HOST, 
->>>>>>> b10bf6e62d43c949241e30ebe8c3493cc3145822
                             port="5432")
     cursor = conn.cursor()
     sql = '''
@@ -56,16 +45,6 @@ def lastest_datetime_data()->list[tuple]:
     return rows
 
 def search_sitename(word:str) -> list[tuple]:
-<<<<<<< HEAD
-    conn = psycopg2.connect(database=pw.DATABASE,
-                            user=pw.USER, 
-                            password=pw.PASSWORD,
-                            host=pw.HOST, 
-                            port="5432")
-    cursor = conn.cursor()
-    sql = '''
-        SELECT *
-=======
     conn = psycopg2.connect(database=DATABASE,
                             user=USER, 
                             password=PASSWORD,
@@ -74,7 +53,6 @@ def search_sitename(word:str) -> list[tuple]:
     cursor = conn.cursor()
     sql = '''
         SELECT 站點名稱,更新時間,行政區,地址,總車輛數,可借,可還
->>>>>>> b10bf6e62d43c949241e30ebe8c3493cc3145822
         FROM 台北市youbike
         WHERE (更新時間,站點名稱) IN (
 	          SELECT MAX(更新時間),站點名稱

@@ -48,6 +48,26 @@
                         {{ form.uGender(class='form-select') }}
                     </td>                    
                   </tr>
+
+                  <tr >
+                    <th scope="row" class="col-2 text-end">{{ form.uPhone.label(class='form-label') }}</th>
+                    <td>
+                        {{ form.uPhone(class='form-control') }}
+                        <p class="lead mt-3" style="font-size:0.8rem"><u>格式:0935-314-926</u></p>
+                        {% if form.uPhone.errors %}
+                            <ul class="errors">
+                            {% for error in form.uPhone.errors %}
+                                <li>
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ error }}
+                                    </div>
+                                </li>
+                                
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </td>                    
+                  </tr>
                   
                   <tr>
                     <th scope="row"></th>

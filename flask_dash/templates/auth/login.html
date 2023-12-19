@@ -28,6 +28,32 @@
 {% block content %}
     <div class="container-lg">
         <h1>登入</h1>
+        <form method="POST">
+            <table class="table">
+                
+                <tbody>
+                  <tr>
+                    <th scope="row">帳號</th>
+                    <td>
+                        <input type="text" id="email" name="email" required minlength="4" maxlength="8" size="10" />
+                    </td>
+                    
+                  </tr>
+                  <tr>
+                    <th scope="row">密碼</th>
+                    <td>
+                        <input type="text" id="password" name="email" required minlength="4" maxlength="8" size="10" />
+                    </td>
+                  
+                  </tr>
+                  <tr>
+                    <th scope="row"></th>
+                    <td><input type="reset" value="重設" /><input type="submit" value="確定" /></td>
+                    
+                  </tr>
+                </tbody>
+              </table>
+        </form>
         {{ super() }}
     </div>
        

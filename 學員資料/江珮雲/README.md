@@ -1,17 +1,65 @@
 # 我是maggie喔！
 
 
-# 10.26作業
-[作業] （https://github.com/maggiechian926/11209-python-school/tree/main/air ）
+# 1
 
-# 11.01作業
-[作業]（https://github.com/maggiechian926/11209-python-school/tree/main/youbike ）
+[09.07作業](./09.07_作業/README.md)
 
-# 11.06作業
-[作業](https://github.com/maggiechian926/11209-python-school/blob/main/Lesson19/map.py )
+# 2
 
-#11.08作業
-[作業]（https://github.com/maggiechian926/11209-python-school/blob/main/2023-11-8%E4%BD%9C%E6%A5%AD.jpg ）
+[09.11作業](./09.11_作業/python基礎與資料輸出.ipynb)
 
-# 11.10作業
-[作業](https://github.com/maggiechian926/11209-python-school/tree/main/taiwan_pm25 )
+# 3
+
+[09.18作業](./09.18_作業/2023.09.18.作業.ipynb)
+
+# 4
+
+[09.20作業](./09.20_作業/2023.09.20BMI.ipynb)
+
+# 5
+
+[09.22作業](./09.22_作業/2023.09.22_作業.ipynb)
+
+# 6
+
+[09.26作業](./09.26_作業/2023.09.26作業.ipynb)
+
+# 7
+
+[09.28作業](./09.28_作業/2023.09.28作業.ipynb)
+
+# 8 
+[10.05作業](./10.05_作業/2023.10.05作業.ipynb)
+
+# 9
+
+[10.11作業](./10.11_作業/LINE.ipynb)
+
+# 10
+
+[10.16作業](./10.16_作業/index.py)
+
+# 11
+
+[10.18作業](./10.18_作業/TSMC.ipynb)
+
+# 12
+
+[10.26作業](./10.26_作業/index.py)
+
+# 13
+
+[11.01作業](./11.01_作業/index.py)
+
+# 14
+
+[11.02作業](./11.02_作業/index.py)
+
+# 14
+
+[11.08作業](./11.08_作業/2023-11-8作業.jpg)
+
+# 15
+
+[11.10作業](./11.10_作業/index.py)

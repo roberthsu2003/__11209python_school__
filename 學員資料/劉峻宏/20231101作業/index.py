@@ -58,7 +58,7 @@ class Window(tk.Tk):
 
     def OnEntryClick(self,event):
         searchEntry = event.widget
-        #使用者輸入的文字
+        # 使用者輸入的文字
         input_text = searchEntry.get()
         if input_text == "":
             # print("空的")

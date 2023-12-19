@@ -31,13 +31,14 @@
     <div class="container-lg">
         <h1>登入</h1>
         <form method="POST">
+            {{ form.csrf_token }}
             <table class="table">
                 
                 <tbody>
                   <tr >
-                    <th scope="row" class="col-2 text-end">帳號</th>
+                    <th scope="row" class="col-2 text-end">{{ form.name.label }}</th>
                     <td>
-                        <input type="text" id="email" name="email" required minlength="4" maxlength="8" size="10"  class="form-control"/>
+                        {{ form.name(size=20,class='form-control') }}
                     </td>
                     
                   </tr>

@@ -7,7 +7,9 @@
 {% block head %}
     {{ super() }}
     <style>
-        
+        #resetBtn{
+            margin-right:20px;
+        }
         @media (min-width: 576px) { }
 
     
@@ -32,23 +34,23 @@
             <table class="table">
                 
                 <tbody>
-                  <tr>
-                    <th scope="row">帳號</th>
+                  <tr >
+                    <th scope="row" class="col-2">帳號</th>
                     <td>
-                        <input type="text" id="email" name="email" required minlength="4" maxlength="8" size="10" />
+                        <input type="text" id="email" name="email" required minlength="4" maxlength="8" size="10"  class="form-control"/>
                     </td>
                     
                   </tr>
                   <tr>
-                    <th scope="row">密碼</th>
+                    <th scope="row" class="col-2">密碼</th>
                     <td>
-                        <input type="text" id="password" name="email" required minlength="4" maxlength="8" size="10" />
+                        <input type="text" id="password" name="password" required minlength="4" maxlength="8" size="10"  class="form-control" />
                     </td>
                   
                   </tr>
                   <tr>
                     <th scope="row"></th>
-                    <td><input type="reset" value="重設" /><input type="submit" value="確定" /></td>
+                    <td><input type="reset" id="resetBtn" value="重設" class="btn btn-secondary"/><input type="submit" value="確定" class="btn btn-primary"/></td>
                     
                   </tr>
                 </tbody>

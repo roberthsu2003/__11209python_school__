@@ -1,17 +1,47 @@
 # ⋘ 陳建任 ⋙
-![^^](./^^.jpg)
+![這是一隻皮卡Fish](./Fish.jpg)
 
-# 10.26作業
-[空氣品質監測站DB](https://github.com/AraRen/PythonSchool_HW/tree/main/2023_10_26)
+# 1
+[09.07作業](./0907/README.md)
 
-# 11.01作業
-[YoubikeDB](https://github.com/AraRen/PythonSchool_HW/tree/main/2023_11_01)
+# 2
+[09.11作業](./0911/HW.ipynb)
 
-# 11.02作業
-[打造知名地標](https://github.com/AraRen/PythonSchool_HW/blob/main/2023_11_02/Marker.py)
+# 3
+[09.18作業](./0918/Homework.ipynb)
 
-# 11.08作業
-[11.08作業](./HW.png)
+# 4
+[09.20作業](./0920/Homework.ipynb)
 
-# 11.10作業
+# 5
+[09.22作業](./0922/Homework.ipynb)
+
+# 6
+[09.26作業](./0926/HW.ipynb)
+
+# 7
+[09.28作業](./0928/HW.ipynb)
+
+# 8
+[10.11作業](./1011/LineNotify_Test.ipynb)
+
+# 9
+[10.16作業](./1016/HW.py)
+
+# 10
+[10.18作業](./1018/HW.ipynb)
+
+# 11
+[10.26作業](./1026/index.py)
+
+# 12
+[11.01作業](./1101/index.py)
+
+# 13
+[11.02作業](./1102/Marker.py)
+
+# 14
+[11.08作業](./1108/HW.png)
+
+# 15
 [11.10作業](./11.10/index.py)

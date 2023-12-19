@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-from dash import Dash, html,dash_table
-=======
 from dash import Dash, html,dash_table,Input,Output,callback,dcc,State
->>>>>>> b10bf6e62d43c949241e30ebe8c3493cc3145822
 import pandas as pd
 import dash_bootstrap_components as dbc
 from . import datasource
@@ -10,22 +6,12 @@ import pandas as pd
 
 dash2 = Dash(requests_pathname_prefix="/dash/app2/",external_stylesheets=[dbc.themes.BOOTSTRAP])
 dash2.title = "台北市youbike及時資料"
-<<<<<<< HEAD
-lastest_data = datasource.lastest_datetime_data()
-lastest_df = pd.DataFrame(lastest_data,columns=['站點名稱','更新時間','行政區','地址','總數','可借','可還'])
-lastest_df1 = lastest_df.reset_index()
-lastest_df1['站點名稱'] = lastest_df1['站點名稱'].map(lambda name:name[11:])
-
-dash2.layout = html.Div(
-    [
-=======
 current_data = datasource.lastest_datetime_data()
 current_df = pd.DataFrame(current_data,columns=['站點名稱','更新時間','行政區','地址','總數','可借','可還'])
 current_df = current_df.reset_index()
 current_df['站點名稱'] = current_df['站點名稱'].map(lambda name:name[11:])
 
 dash2.layout = html.Div(    [
->>>>>>> b10bf6e62d43c949241e30ebe8c3493cc3145822
         dbc.Container([
             html.Div([
                 html.Div([
@@ -36,11 +22,6 @@ dash2.layout = html.Div(    [
             style={"paddingTop":'2rem'}),
             html.Div([
                 html.Div([
-<<<<<<< HEAD
-                    dash_table.DataTable(
-                        data=lastest_df1.to_dict('records'),
-                        columns=[{'id':column,'name':column} for column in lastest_df1.columns],
-=======
                     html.Div([
                                 dbc.Label("站點名稱"),
                                 dbc.Input(id='input_value',
@@ -58,7 +39,6 @@ dash2.layout = html.Div(    [
                 html.Div([
                     dash_table.DataTable(
                         id='main_table',
->>>>>>> b10bf6e62d43c949241e30ebe8c3493cc3145822
                         page_size=20,
                         style_table={'height': '300px', 'overflowY': 'auto'},
                         fixed_rows={'headers': True},
@@ -74,20 +54,13 @@ dash2.layout = html.Div(    [
                                  'width': '5%'},
                                 {   'if': {'column_id': '可還'},
                                  'width': '5%'},
-<<<<<<< HEAD
-                        ]
-=======
                         ],
                         row_selectable="single",
                         selected_rows=[]
->>>>>>> b10bf6e62d43c949241e30ebe8c3493cc3145822
                     ),
                 ],className="col text-center")
             ],
             className="row",
-<<<<<<< HEAD
-            style={"paddingTop":'2rem'}),
-=======
             style={"paddingTop":'0.5rem'}),
             html.Div([
                 html.Div(children="",className="col",id='showMessage')
@@ -95,13 +68,10 @@ dash2.layout = html.Div(    [
             className="row",
             style={"paddingTop":'2rem'})
 
->>>>>>> b10bf6e62d43c949241e30ebe8c3493cc3145822
         ])
     ],
     className="container-lg"
     )
-<<<<<<< HEAD
-=======
 
 @callback(
         [Output('main_table','data'),Output('main_table','columns'),Output('main_table','selected_rows')],
@@ -140,4 +110,3 @@ def selectedRow(selected_rows:list[int]):
         return oneTable
     
     return None
->>>>>>> b10bf6e62d43c949241e30ebe8c3493cc3145822

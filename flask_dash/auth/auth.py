@@ -1,7 +1,7 @@
 from flask import Blueprint,render_template,request,redirect
 from flask_wtf import FlaskForm
 from wtforms import StringField,SelectField
-from wtforms.validators import DataRequired,Length
+from wtforms.validators import DataRequired,Length,Regexp
 
 blueprint_auth = Blueprint('auth', __name__,url_prefix='/auth')
 
@@ -29,6 +29,8 @@ def success():
 class UserRegistrationForm(FlaskForm):
     uName = StringField("姓名",validators=[DataRequired(message="此欄必需有資料"),Length(min=2,max=20)])
     uGender = SelectField("性別",choices=[("女","女"),("男","男"),("其它","其它")])
+    uPhone = StringField("聯絡電話",validators=[Regexp(r'\d\d\d\d-\d\d\d-\d\d\d',message="格式不正確")])
+
 @blueprint_auth.route('/registor',methods=['GET','POST'])
 def register():
     form = UserRegistrationForm()
@@ -40,5 +42,10 @@ def register():
 
             uGender = form.uGender.data
             print("性別",uGender)
+
+            uPhone = form.uPhone.data
+            print("手機號碼",uPhone)
+        else:
+            print("驗證失敗")
 
     return render_template('/auth/registor.html',form=form)

@@ -1,4 +1,7 @@
 from flask import Blueprint,render_template,request
+from flask_wtf import FlaskForm
+from wtforms import StringField
+from wtforms.validators import DataRequired
 
 blueprint_auth = Blueprint('auth', __name__,url_prefix='/auth')
 

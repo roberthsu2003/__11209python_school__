@@ -4,7 +4,7 @@ from flask_wtf import FlaskForm
 from wtforms import PasswordField,EmailField,StringField,SelectField,BooleanField,DateField,TextAreaField
 from wtforms.validators import DataRequired,Length,Regexp,Optional,EqualTo
 from werkzeug.security import generate_password_hash, check_password_hash
-from .datasource import insert_data,InvalidEmailException
+from .datasource import insert_data,validateUser,InvalidEmailException
 from . import password as pw
 import secrets
 import datetime
@@ -71,17 +71,7 @@ def register():
             except:
                 form.uEmail.errors.append("不知名的錯誤")
             else:
-                return redirect('/auth/login')
-                
-            
-
-
-            
-
-
-
-
-            
+                return redirect(f'/auth/login/{uEmail}')         
         else:
             print("驗證失敗")
     else:
@@ -92,20 +82,28 @@ def register():
 
 class MyForm(FlaskForm):
     email = EmailField('郵件信箱',validators=[DataRequired()])
-    password = PasswordField('密碼',validators=[DataRequired()])    
+    password = PasswordField('密碼',validators=[DataRequired(),Length(min=4,max=20)])    
 
 @register_blue.route("/login",methods=['GET','POST'])
-def login():
+@register_blue.route("/login/<email>",methods=['GET'])
+def login(email:str | None = None):
     form = MyForm()
     if request.method == "POST":
         if form.validate_on_submit():
-            print("驗證成功")
-            return redirect('/auth/success')
+            email = form.email.data
+            password = form.password.data
+            if validateUser(email,password):
+                return redirect('/') #成功
+            else:                
+                form.email.errors.append("帳號或密碼錯誤")
+                form.email.data = ""               
         else:
             print("驗證失敗")      
         
     else:
         print("第一次進入")
+        if email is not None:
+            form.email.data = email           
 
     return render_template("auth/login.html",form = form)
 

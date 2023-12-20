@@ -1,5 +1,6 @@
 import psycopg2
 from . import password as pw
+from werkzeug.security import check_password_hash
 
 class InvalidEmailException(Exception):
     pass
@@ -25,6 +26,28 @@ def insert_data(values:list[any]=None)->None:
     conn.commit()
     cursor.close()
     conn.close()
+
+def validateUser(email:str,password:str)->bool:
+    conn = psycopg2.connect(database=pw.DATABASE,
+                            user=pw.USER, 
+                            password=pw.PASSWORD,
+                            host=pw.HOST, 
+                            port="5432")
+    cursor = conn.cursor()
+    sql = '''
+    select 密碼
+    from 使用者
+    where 電子郵件 = %s
+    '''
+
+    cursor.execute(sql,[email])
+    hash_password:tuple[str] = cursor.fetchone() 
+    is_ok = check_password_hash(hash_password[0],password)
+    print(is_ok)    
+    cursor.close()
+    conn.close()
+    return True if is_ok else False 
+
 
     
 

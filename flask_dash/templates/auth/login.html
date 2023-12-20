@@ -42,7 +42,12 @@
         {% if form.email.errors %}
             <ul>
             {% for error in form.email.errors %}
-                <li>{{ error }}</li>
+                <li>
+                    <div class="alert alert-warning" role="alert">
+                        {{ error }}
+                    </div>
+                </li>
+            
             {% endfor %}
             </ul>
         {% endif %}

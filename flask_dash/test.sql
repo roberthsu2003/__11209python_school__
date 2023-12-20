@@ -24,5 +24,18 @@ CREATE TABLE IF NOT EXISTS 使用者(
 #新增使用者
 INSERT INTO 使用者("姓名", "性別", "聯絡電話", "電子郵件", "isGetEmail","出生年月日", "自我介紹", "密碼", "連線密碼") 
 VALUES ('徐國堂','男','0935-123-456','roberthsu2003@gmail.com',true,'1970-03-01','老師','abc','efg')
+
+#搜尋使用者
+select *
+from 使用者
+
+#刪除資料
+delete from 使用者
+
+select 密碼
+from 使用者
+where 電子郵件 = 'roberthsu2003@gmail.com'
+
+
     
 

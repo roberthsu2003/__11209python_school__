@@ -3,6 +3,11 @@ from jinja2 import TemplateNotFound
 from flask_wtf import FlaskForm
 from wtforms import PasswordField,EmailField,StringField,SelectField,BooleanField,DateField,TextAreaField
 from wtforms.validators import DataRequired,Length,Regexp,Optional,EqualTo
+from werkzeug.security import generate_password_hash, check_password_hash
+from .datasource import insert_data,InvalidEmailException
+from . import password as pw
+import secrets
+import datetime
 
 register_blue = Blueprint('register',__name__,url_prefix='/auth')
 
@@ -33,20 +38,47 @@ def register():
             print("電話=",uPhone)
 
             uEmail = form.uEmail.data
-            form.uEmail.errors.append("email有相同的") #自訂錯誤
+            #form.uEmail.errors.append("email有相同的") #自訂錯誤
             print("email=",uEmail)
 
             isGetEmail = form.isGetEmail.data
             print("促銷=", "接受" if isGetEmail else "不接受" )
 
-            uBirthday = form.uBirthday.data
-            print("出生年月日",uBirthday)
+            uBirthday:datetime.date | None = form.uBirthday.data
+            #uBirthday型別是datetime.date
+            if uBirthday is not None:
+                uBirthday_str = uBirthday.strftime("%Y-%m-%d")
+                print("出生年月日:",uBirthday_str)
+            else:
+                uBirthday_str = "1900-01-01"
 
-            uAboutMe = form.uAboutMe.data
-            print("關於我",uAboutMe) 
+            uAboutMe = form.uAboutMe.data #沒有填是空字串
+            print("關於我:",uAboutMe) 
 
             uPass = form.uPass.data
-            print("密碼",uPass)
+            print("密碼:",uPass)
+
+                      
+            #產生password hash
+            hash_password= generate_password_hash(uPass,method='pbkdf2:sha256',salt_length=8)
+
+            conn_token = secrets.token_hex(16)                
+            try:
+                insert_data([uName,uGender,uPhone,uEmail,isGetEmail,uBirthday_str,uAboutMe,hash_password,conn_token])
+
+            except InvalidEmailException:
+                form.uEmail.errors.append("有相同的email") #自訂錯誤
+            except:
+                form.uEmail.errors.append("不知名的錯誤")
+            else:
+                return redirect('/auth/login')
+                
+            
+
+
+            
+
+
 
 
             

@@ -27,7 +27,7 @@ def insert_data(values:list[any]=None)->None:
     cursor.close()
     conn.close()
 
-def validateUser(email:str,password:str)->bool:
+def validateUser(email:str,password:str)->tuple[bool,str]:
     conn = psycopg2.connect(database=pw.DATABASE,
                             user=pw.USER, 
                             password=pw.PASSWORD,
@@ -35,18 +35,19 @@ def validateUser(email:str,password:str)->bool:
                             port="5432")
     cursor = conn.cursor()
     sql = '''
-    select 密碼
+    select 密碼,姓名
     from 使用者
     where 電子郵件 = %s
     '''
 
     cursor.execute(sql,[email])
-    hash_password:tuple[str] = cursor.fetchone() 
-    is_ok = check_password_hash(hash_password[0],password)
-    print(is_ok)    
+    searchData:tuple[str,str] = cursor.fetchone() #傳出tuple(hash_apssword,name)
+    hash_password = searchData[0]
+    username = searchData[1]
+    is_ok = check_password_hash(hash_password,password)        
     cursor.close()
     conn.close()
-    return True if is_ok else False 
+    return (is_ok,username) 
 
 
     

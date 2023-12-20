@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, abort,redirect,request
+from flask import Blueprint, render_template, abort,redirect,request,session
 from jinja2 import TemplateNotFound
 from flask_wtf import FlaskForm
 from wtforms import PasswordField,EmailField,StringField,SelectField,BooleanField,DateField,TextAreaField
@@ -92,8 +92,10 @@ def login(email:str | None = None):
         if form.validate_on_submit():
             email = form.email.data
             password = form.password.data
-            if validateUser(email,password):
-                return redirect('/') #成功
+            is_ok, name= validateUser(email,password) #驗証ok,傳出tuple
+            if is_ok:
+                session['username'] = name #將使用者名稱加入至username內
+                return redirect("/")
             else:                
                 form.email.errors.append("帳號或密碼錯誤")
                 form.email.data = ""               
@@ -110,3 +112,8 @@ def login(email:str | None = None):
 @register_blue.route('/success')
 def success():
     return render_template('auth/success.html')
+
+@register_blue.route('/logout')
+def logout():
+    session.pop('username',default=None)
+    return redirect('/')

@@ -104,3 +104,8 @@ def register():
             print("驗證失敗")
 
     return render_template('/auth/registor.html',form=form)
+
+@blueprint_auth.route('/logout')
+def logout():
+    session.pop('username',default=None)
+    return redirect('/')

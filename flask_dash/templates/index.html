@@ -28,6 +28,9 @@
 {% block content %}
     <div class="container-lg">
         <h1>Flask_Dash__及時更新</h1>
+        {% if username %}
+        <h5>{{username}},歡迎光臨</h5>
+        {% endif %}
         {{ super() }}
     </div>
        

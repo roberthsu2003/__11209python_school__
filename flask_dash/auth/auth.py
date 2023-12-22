@@ -2,6 +2,8 @@ from flask import Blueprint,render_template,request,redirect
 from flask_wtf import FlaskForm
 from wtforms import StringField,SelectField,EmailField,BooleanField,DateField,TextAreaField,PasswordField
 from wtforms.validators import DataRequired,Length,Regexp,Optional,EqualTo
+from werkzeug.security import generate_password_hash, check_password_hash
+import secrets
 
 blueprint_auth = Blueprint('auth', __name__,url_prefix='/auth')
 
@@ -73,6 +75,12 @@ def register():
 
             uPass = form.uPass.data
             print("密碼",uPass)
+
+            hash_password:str = generate_password_hash(uPass,method='pbkdf2:sha256',salt_length=8)
+            #print(hash_password)
+            #print("密碼正確" if check_password_hash(hash_password,uPass) else "密碼錯誤")
+
+            conn_token = secrets.token_hex(16)
 
             return redirect(f'/auth/login/{uEmail}')
             

@@ -74,7 +74,7 @@ def register():
             uPass = form.uPass.data
             print("密碼",uPass)
 
-            return redirect('/auth/login')
+            return redirect(f'/auth/login/{uEmail}')
             
         else:
             print("驗證失敗")

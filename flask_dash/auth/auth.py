@@ -4,7 +4,7 @@ from wtforms import StringField,SelectField,EmailField,BooleanField,DateField,Te
 from wtforms.validators import DataRequired,Length,Regexp,Optional,EqualTo
 from werkzeug.security import generate_password_hash, check_password_hash
 import secrets
-from .datasource import insert_data
+from .datasource import insert_data,InvolidEmailException
 import datetime
 
 blueprint_auth = Blueprint('auth', __name__,url_prefix='/auth')
@@ -86,10 +86,15 @@ def register():
             #print(hash_password)
             #print("密碼正確" if check_password_hash(hash_password,uPass) else "密碼錯誤")
             conn_token = secrets.token_hex(16)
-
-            insert_data([uName, uGender, uPhone, uEmail, isGetEmail, uBirthday_str, uAboutMe, hash_password, conn_token])
-
-            return redirect(f'/auth/login/{uEmail}')
+            try:
+                insert_data([uName, uGender, uPhone, uEmail, isGetEmail, uBirthday_str, uAboutMe, hash_password, conn_token])
+            except InvolidEmailException:
+                form.uEmail.errors.append("有相同的email")
+            except RuntimeError:
+                form.uEmail.errors.append("不知名的錯誤")
+            else:
+                return redirect(f'/auth/login/{uEmail}')
+            
             
         else:
             print("驗證失敗")

@@ -73,6 +73,17 @@
                     <th scope="row" class=" text-end">{{ form.uEmail.label(class='form-label') }}</th>
                     <td>
                         {{ form.uEmail(class='form-control') }}
+                        {% if form.uEmail.errors %}
+                            <ul class="errors">
+                            {% for error in form.uEmail.errors %}
+                                <li>
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ error }}
+                                    </div>
+                                </li>
+                                
+                            {% endfor %}
+                        {% endif %}
                     </td>
                   </tr> 
                   

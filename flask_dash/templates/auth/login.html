@@ -39,6 +39,17 @@
                     <th scope="row" class="col-2 text-end">{{ form.email.label }}</th>
                     <td>
                         {{ form.email(class='form-control') }}
+                        {% if form.email.errors %}
+                            <ul class="errors">
+                            {% for error in form.email.errors %}
+                                <li>
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ error }}
+                                    </div>
+                                </li>
+                                
+                            {% endfor %}
+                        {% endif %}
                     </td>
                     
                   </tr>

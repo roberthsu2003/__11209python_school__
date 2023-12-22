@@ -96,6 +96,33 @@
                         {{ form.uAboutMe(class='form-control') }}
                     </td>
                   </tr>
+
+                  <tr >
+                    <th scope="row" class=" text-end">{{ form.uPass.label(class='form-label') }}</th>
+                    <td>
+                        {{ form.uPass(class='form-control') }}
+                        {% if form.uPass.errors %}
+                            <ul class="errors">
+                            {% for error in form.uPass.errors %}
+                                <li>
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ error }}
+                                    </div>
+                                </li>
+                                
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </td>
+
+                  </tr>
+
+                  <tr >
+                    <th scope="row" class=" text-end">{{ form.uConfirmPass.label(class='form-label') }}</th>
+                    <td>
+                        {{ form.uConfirmPass(class='form-control') }}
+                    </td>
+                  </tr>
                   
                   <tr>
                     <th scope="row"></th>

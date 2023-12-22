@@ -1,7 +1,7 @@
 from flask import Blueprint,render_template,request,redirect
 from flask_wtf import FlaskForm
-from wtforms import StringField,SelectField,EmailField,BooleanField,DateField,TextAreaField
-from wtforms.validators import DataRequired,Length,Regexp,Optional
+from wtforms import StringField,SelectField,EmailField,BooleanField,DateField,TextAreaField,PasswordField
+from wtforms.validators import DataRequired,Length,Regexp,Optional,EqualTo
 
 blueprint_auth = Blueprint('auth', __name__,url_prefix='/auth')
 
@@ -34,6 +34,9 @@ class UserRegistrationForm(FlaskForm):
     isGetEmail = BooleanField("接受促銷email",default=False)
     uBirthday = DateField("出生年月日",validators=[Optional()],format='%Y-%m-%d')
     uAboutMe = TextAreaField('自我介紹', [Optional(), Length(max=200)])
+    uPass = PasswordField("密碼",validators=[DataRequired(),Length(min=4,max=20),EqualTo('uConfirmPass',message='驗証密碼不正確')])
+    uConfirmPass = PasswordField("驗証密碼",validators=[DataRequired(),Length(min=4,max=20)])
+    
 
 
 @blueprint_auth.route('/registor',methods=['GET','POST'])
@@ -62,6 +65,9 @@ def register():
 
             uAboutMe = form.uAboutMe.data
             print("自我介紹",uAboutMe)
+
+            uPass = form.uPass.data
+            print("密碼",uPass)
             
         else:
             print("驗證失敗")

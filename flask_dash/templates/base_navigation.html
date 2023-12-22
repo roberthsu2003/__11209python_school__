@@ -16,8 +16,9 @@
           <li class="nav-item">
             <a class="nav-link" href="#">產品</a>
           </li>
+          {% if username %}
           <li class="nav-item">
-            <a class="nav-link" href="/auth">登入</a>
+            <a class="nav-link" href="/auth/logout">登出</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -30,7 +31,11 @@
               <li><a class="dropdown-item" href="#">dash3</a></li>
             </ul>
           </li>
-          
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="/auth">登入</a>
+          </li>
+          {% endif %}
         </ul>
         
       </div>

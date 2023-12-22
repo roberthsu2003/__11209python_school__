@@ -1,4 +1,4 @@
-from flask import Flask,render_template,url_for
+from flask import Flask,render_template,session
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 from werkzeug.serving import run_simple
 from dash_file.dash_app1 import dash1
@@ -18,7 +18,11 @@ application = DispatcherMiddleware(
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    if 'username' in session:
+        user = session['username']
+    else:
+        user = None
+    return render_template("index.html",username=user)
 
 if __name__ == "__main__":
     run_simple("localhost", 8080, application,use_debugger=True,use_reloader=True)

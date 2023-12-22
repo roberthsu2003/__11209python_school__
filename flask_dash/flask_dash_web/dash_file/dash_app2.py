@@ -1,6 +1,6 @@
 from dash import Dash, html,dash_table,Input,Output,callback,dcc,State
 import pandas as pd
-import dash_bootstrap_components as dbc
+import  as dbc
 from . import datasource
 import pandas as pd
 

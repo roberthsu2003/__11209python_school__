@@ -1,41 +1,50 @@
 #### 16 葉俐彤
 ## 2023_09_07_作業
-[練習使用Markdown語法](https://github.com/Rachelyah/20230907-)
+[練習使用Markdown語法](./0907_練習使用Markdown語法/)
 
 ## 2023_09_11_作業
-[基礎資料輸出&數值計算與資料輸入](https://github.com/Rachelyah/20230911_homework)
+[基礎資料輸出&數值計算與資料輸入](./0911_基礎資料輸出&數值計算與資料輸入/)
 
 ## 2023_09_18_作業
-[巢狀判斷](https://github.com/Rachelyah/11209Python_school/blob/main/0918/%E5%9B%9E%E5%AE%B6%E4%BD%9C%E6%A5%AD/lesson6_2.ipynb)
+[巢狀判斷](./0918_巢狀判斷/)
 
 ## 2023_09_20_作業
-[巢狀判斷-多項選擇_if&elif](https://github.com/Rachelyah/11209Python_school/blob/main/0920/回家作業/條件分析回家作業.ipynb)
+[巢狀判斷-多項選擇_if&elif](./0920_巢狀判斷-多項選擇_if&elif/)
 
 ## 2023_09_22_作業
-[迴圈算因數、質數＆隨機產生範圍內整數](https://github.com/Rachelyah/11209Python_school/blob/main/0922/上課練習/回家作業/0922回家作業.ipynb)
+[迴圈算因數、質數＆隨機產生範圍內整數](./0922_迴圈算因數、質數＆隨機產生範圍內整數/)
 
 ## 2023_09_26
-[十八辣遊戲](https://github.com/Rachelyah/11209Python_school/blob/main/0926/%E5%9B%9E%E5%AE%B6%E4%BD%9C%E6%A5%AD/0926%E5%9B%9E%E5%AE%B6%E4%BD%9C%E6%A5%AD.ipynb)
+[十八辣遊戲](./0926_十八辣遊戲/)
 
 ## 2023_09_28
-[十八辣遊戲-物件導向＆封裝寫法](https://github.com/Rachelyah/11209Python_school/blob/main/0928/回家作業/十八辣遊戲.ipynb)
+[十八辣遊戲-物件導向＆封裝寫法](./0928_十八辣遊戲-物件導向＆封裝寫法/)
 
 ## 2023_10_05
-[檔案下載與存取(csv、json)](https://github.com/Rachelyah/11209Python_school/blob/main/1005/homework.ipynb)
+[檔案下載與存取(csv、json)](./1005_檔案下載與存取(csv、json)/)
 
 ## 2023_10_11
-[LINE Notify]([https://github.com/Rachelyah/11209Python_school/blob/main/1011/LINE-homework/LINE%20notify.ipynb](https://github.com/Rachelyah/11209Python_school/tree/main/1011/LINE_Notify))
+[LINE Notify](./1011_LINE/homework-整合LINE使用.ipynb)
 
-[LINE bot](https://github.com/Rachelyah/LINE-bot)
+[LINE bot](./1011_LINE/)
 
 ## 2023_10_16
-[台積電股市資訊查詢](https://github.com/Rachelyah/11209Python_school/blob/main/1016/homework.py)
+[台積電股市資訊查詢](./1016_台積電股市資訊查詢/)
 
 ## 2023_10_30
-[SQLite資料匯入] (https://github.com/Rachelyah/11209Python_school/tree/main/1026/homework_%E7%A9%BA%E6%B0%A3%E5%93%81%E8%B3%AA%E8%B3%87%E6%96%99)
+[SQLite資料匯入](./1030_SQLite資料匯入/)
 
 ## 2023_11_02
-[tkinter地圖功能](https://github.com/Rachelyah/11209Python_school/blob/main/1101/homework_地圖/map.ipynb)
+[tkinter地圖功能](./1102_TKinter地圖/)
+
+## 2023_11_08
+[PostgreSQL匯入youbike資料](./1108_PostgreSQL匯入youbike資料/)
 
 ## 2023_11_10
-[將pm2.5資料匯入Postgre資料庫](https://github.com/Rachelyah/11209Python_school/tree/main/1110/homework-%E5%BB%BA%E7%BD%AE%E7%92%B0%E5%A2%83%E9%83%A8pm2.5%E8%B3%87%E6%96%99%E5%BA%AB)
+[將pm2.5資料匯入Postgre資料庫](./1110_pm2.5%20資料匯入資料庫/)
+
+## tkinter專題_中華職棒球員資料查詢
+[tkinter專題_中華職棒球員資料查詢](./tkinter專題_中華職棒球員資料查詢/)
+
+## Dash專題_中華職棒投手資料查詢網頁
+[Dash專題_中華職棒投手資料查詢網頁](https://github.com/Rachelyah/CPBL_DASH_Project)
